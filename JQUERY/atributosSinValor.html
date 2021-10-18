@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba con checkbox</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Practica con EACH y con CHECKED</h1>
+
+    <button type="button" id="botonGenerar">Generar números</button>
+    <button type="button" id="botonSumar">Sumar chequeados</button>
+    <hr />
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <input type="checkbox"><label></label>
+    <hr />
+    <h1 id="resultado"></h1>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#botonGenerar").click(function () {
+
+                $("input[type=checkbox]").each(function () {
+
+                    let dado = parseInt((Math.random() * 30) + 1);
+                    $(this).val(dado);
+
+                    $(this).next().text(dado);
+
+                })
+            })
+
+            $("#botonSumar").click(function () {
+                var suma = 0;
+
+                $("input[type=checkbox]").each(function () {
+
+                    if ($(this).is(":checked")) {
+                        var numero = parseInt($(this).val());
+                        suma += numero;
+
+                        $("#resultado").text(suma);
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

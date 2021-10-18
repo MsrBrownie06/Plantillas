@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rango</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <label>Cantidad de imagenes</label>
+    <input id="rango" type="range" min="1" max="10" value="1">
+    <br /><br />
+    <div id="dad"></div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#rango").change(function () {
+                $("#dad").text("");
+                var range = $(this).val();
+
+                for (let x = 0; x < range; x++) {
+
+                    var imagen = $("<img>", { "src": "./img/DRAGON DE LA IRA-MELIODAS.jpg", "width": "250px" })
+                    imagen.css("padding", "5px")
+                    imagen.mouseover(function () {
+                        $(this).attr("src", "./img/LOGO_PERSONAL.png")
+                    });
+
+                    imagen.mouseout(function () {
+                        $(this).attr("src", "./img/DRAGON DE LA IRA-MELIODAS.jpg")
+                    })
+
+                    $("#dad").append(imagen)
+                }
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

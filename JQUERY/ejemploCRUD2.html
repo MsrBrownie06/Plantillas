@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+</head>
+
+<body class="container-fluid bg-dark text-white">
+
+    <h1 class="text-center pt-3">GESTION DE HOSPITALES</h1>
+
+    <div class="row d-flex justify-content-center p-5">
+        <div id="contenedor" class="col-3 text-center text-dark bg-light rounded border border-5 border-success">
+            <form class="p-3">
+                <label class="form-label fw-bold">Numero</label>
+                <input id="numero" class="form-control" type="number"><br>
+
+                <label class="form-label fw-bold">Nombre</label>
+                <input id="nombre" class="form-control" type="text"><br>
+
+                <label class="form-label fw-bold">Direccion</label>
+                <input id="direccion" class="form-control" type="text"><br>
+
+                <label class="form-label fw-bold">Telefono</label>
+                <input id="telefono" class="form-control" type="text"><br>
+
+                <label class="form-label fw-bold">Nº Camas</label>
+                <input id="camas" class="form-control" type="number"><br>
+
+                <button id="insertar" type="button" class="btn btn-outline-success m-3">Insertar</button>
+                <button id="modificarFinal" type="button" style="display: none;"
+                    class="btn btn-outline-warning m-3">Modificar</button>
+            </form>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-8">
+            <table id="hospitales" class="table text-center fw-bold mt-4">
+                <thead class="table-info">
+                    <tr>
+                        <td>ID</td>
+                        <td>NOMBRE</td>
+                        <td>DIRECCION</td>
+                        <td>TELEFONO</td>
+                        <td>CAMAS</td>
+                        <td>ACCIONES</td>
+                    </tr>
+                </thead>
+                <tbody class="text-white"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        var urlHos = "https://apicrudhospital.azurewebsites.net";
+        $(document).ready(function () {
+            cargarHospitales();
+
+
+            $("#insertar").click(function () {
+
+                let numero = parseInt($("#numero").val());
+                let nombre = $("#nombre").val();
+                let direccion = $("#direccion").val();
+                let telefono = $("#telefono").val();
+                let camas = parseInt($("#camas").val());
+
+                if (nombre != "" && direccion != "" && telefono != "" && camas != "") {
+
+                    //creamos el objeto para despues tranformarlo a JSON
+                    let Hospital = new Object();
+
+                    Hospital.idhospital = numero;
+                    Hospital.nombre = nombre;
+                    Hospital.direccion = direccion;
+                    Hospital.telefono = telefono;
+                    Hospital.camas = camas;
+
+                    //Transformamos el objeto a JSON
+
+                    var json = JSON.stringify(Hospital);
+
+                    let request = "/webresources/hospitales/post";
+
+                    $.ajax({
+                        "url": urlHos + request,
+                        "method": "POST",
+                        "data": json,
+                        "contentType": "application/json",
+                        success: function () {
+
+                            alert("Se inserto correctamente")
+                            cargarHospitales()
+
+                        }
+
+                    })
+
+                } else {
+                    alert("deben estar todos los datos");
+                }
+
+            });
+
+            $("#modificarFinal").click(function(){
+                ModificarHospital();
+            });
+                
+        });
+
+        function cargarHospitales() {
+            $("#hospitales tbody").empty();
+            let request = "/webresources/hospitales";
+            $.ajax({
+                "url": urlHos + request,
+                "method": "GET",
+                "dataType": "JSON",
+                success: function (data) {
+
+                    $.each(data, function (index, hospital) {
+
+                        let tr = $("<tr>");
+
+                        let tdId = $("<td>", { "text": hospital.idhospital })
+                        let tdnom = $("<td>", { "text": hospital.nombre })
+                        let tddir = $("<td>", { "text": hospital.direccion })
+                        let tdtel = $("<td>", { "text": hospital.telefono })
+                        let tdcam = $("<td>", { "text": hospital.camas })
+
+                        //botones modificar y borrar
+                        let tdAccion = $("<td>");
+
+                        let borrar = $("<button>", { "text": "Eliminar", "type": "button", "class": "btn btn-outline-danger mx-1", "data-id": hospital.idhospital })
+                        let modificar = $("<button>", { "text": "Modificar", "type": "button", "class": "btn btn-outline-warning mx-1", "data-id": hospital.idhospital })
+                        modificar.click(function () {
+                            let id = $(this).data("id");
+                            vistaModificarHospital(id);
+                        })
+                        borrar.click(function(){
+                            let id = $(this).data("id");
+                            eliminarHospital(id);
+                        })
+                        tdAccion.append(modificar).append(borrar);
+
+                        tr.append(tdId).append(tdnom).append(tddir).append(tdtel).append(tdcam).append(tdAccion);
+
+                        $("#hospitales tbody").append(tr);
+
+                    });
+
+                }
+            })
+        }
+
+        function eliminarHospital(id){
+            let requestDELETE = "/webresources/hospitales/delete/" + id;
+            let res = confirm("¿Seguro que desea eliminar este dato?")
+            if(res == true){
+                $.ajax({
+                    "url" : urlHos + requestDELETE,
+                    "method" : "DELETE",
+                    success : function(){
+                        alert("Se elimino correctamente")
+                        cargarHospitales();
+                    }
+                })
+            }else{
+                alert("Se cancelo la eliminacion")
+            }
+        }
+        function vistaModificarHospital(id) {
+
+            //obtenemos primero los datos en la tabla de arriba
+            let requestGET = "/webresources/hospitales/" + id;
+
+            $("#contenedor").attr("class", "col-3 text-center text-dark bg-light rounded border border-5 border-warning")
+            $("#insertar").css("display", "none")
+            $("#modificarFinal").css("display", "")
+
+            $.ajax({
+                "url": urlHos + requestGET,
+                "method": "GET",
+                "dataType": "JSON",
+                success: function (data) {
+
+                    $("#numero").val(data.idhospital)
+                    $("#nombre").val(data.nombre)
+                    $("#direccion").val(data.direccion)
+                    $("#telefono").val(data.telefono)
+                    $("#camas").val(data.camas)
+
+                }
+            });
+
+        }
+
+        function ModificarHospital() {
+            let requestPUT = "/webresources/hospitales/put"
+
+            let numero = parseInt($("#numero").val());
+            let nombre = $("#nombre").val();
+            let direccion = $("#direccion").val();
+            let telefono = $("#telefono").val();
+            let camas = parseInt($("#camas").val());
+
+            //creamos el objeto para despues tranformarlo a JSON
+            let Hospital = new Object();
+
+            Hospital.idhospital = numero;
+            Hospital.nombre = nombre;
+            Hospital.direccion = direccion;
+            Hospital.telefono = telefono;
+            Hospital.camas = camas;
+
+            //Transformamos el objeto a JSON
+
+            var jsonMod = JSON.stringify(Hospital);
+
+            $.ajax({
+                "url": urlHos + requestPUT,
+                "method": "PUT",
+                "data": jsonMod,
+                "contentType": "application/json",
+                success: function () {
+
+                    alert("Modificacion realizada ^^")
+
+                    $("#contenedor").attr("class", "col-3 text-center text-dark bg-light rounded border border-5 border-success")
+                    $("#insertar").css("display", "")
+                    $("#modificarFinal").css("display", "none")
+
+                    $("#numero").val("")
+                    $("#nombre").val("")
+                    $("#direccion").val("")
+                    $("#telefono").val("")
+                    $("#camas").val("")
+
+                    cargarHospitales();
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

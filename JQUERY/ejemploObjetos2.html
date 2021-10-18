@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numero aleatorios</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h1>Sumar numeros con botones DINÁMICOS</h1>
+    <h2 id="numIni" style="color:mediumpurple;">0</h2>
+    <div id="contenedor"></div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            for (let x = 0; x < 10; x++) {
+
+                let aleatorio = parseInt((Math.random() * 50) + 1);
+
+                let boton = $("<button>", { "type": "button", "text": aleatorio, "value": aleatorio, "style": "padding: 10px; margin: 5px" });
+
+                boton.click(function () {
+                    let numIni = $("#numIni").text();
+                    let resultado = parseInt($(this).val()) + parseInt(numIni);
+
+
+                    $("#numIni").text(resultado);
+                });
+
+                $("#contenedor").append(boton);
+
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba con JSON</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <h1>Documento de JSON Simple</h1>
+    <button type="button" class="btn btn-outline-info" id="botonGet">Leer con getJson</button>
+    <button type="button" class="btn btn-outline-info" id="botonAjax">Leer con Ajax</button>
+
+    <div id="contenedor"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $("#botonGet").click(function () {
+
+                $.getJSON("./doc/json/tareas.json", function (data) {
+
+                    //key y value son nombres de variables, pueden tener cualquier otro nombre
+                    $.each(data, function (key, value) {
+                        //key es la calve JSON y value el valor del JSON
+                        var h1 = $("<h2>", {
+                            "text": "la Clave es: " + key + " y el Valor es: " + value
+                        })
+
+                        h1.appendTo($("#contenedor"))
+
+                    })
+
+                })
+
+            });
+
+            $("#botonAjax").click(function () {
+
+                $.ajax({
+
+                    "url": "./doc/json/tareas.json",
+                    "method": "GET",
+                    "dataType": "json",
+                    "success" : function (data) {
+
+                        $.each(data, function (key, value) {
+                        
+                            var h2 = $("<h2>", {
+                                "text": "la Clave es: " + key + " y el Valor es: " + value
+                            });
+
+                            h2.appendTo($("#contenedor"));
+
+                        });
+                    },
+                    "error": function (error) {
+                        $("#contenedor").text("Error del servicio")
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

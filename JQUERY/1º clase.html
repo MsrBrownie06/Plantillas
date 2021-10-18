@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas con JQUERY</title>
+    <script src="./JS/jquery-3.6.0.min.js"></script>
+    <!-- <script src="./JS/prueba.js"></script> -->
+    <style>
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+        #redButton{
+            color: red;
+            padding: 10px;
+            background-color:darkred;
+        }
+        #greenButton{
+            color: green;
+            padding: 10px;
+            background-color: greenyellow;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>BIENVENIDO A JQUERY</h1>
+    <h2 class="green">Titulo nivel 2</h2>
+    <h3 class="red">Titulo nivel 3</h3>
+    <h4 class="red">Titulo nivel 4</h4>
+    <h5>Titulo nivel 5</h5>
+    <h6>Titulo nivel 6</h6>
+    <button id="greenButton">Mostrar</button>
+    <button id="redButton">Ocultar</button>
+    <button id="titulosRojos">OCULTAR Titulos Rojos</button>
+    <br/><br/>
+    <img src="./img/DRAGON DE LA IRA-MELIODAS.jpg" width="250px">
+
+    <script>
+        $(document).ready(function(){
+            //alert("Bienvenido");
+
+            //ACCION - ORDENES
+            $("h2").hide();
+            
+            //EVENTOS
+
+            $("#greenButton").click(function(){
+                $("h2").show();
+            });
+
+            $("#redButton").click(function(){
+                $("h2").hide();
+            });
+
+            $("#titulosRojos").click(function(){
+                $(".red").hide(); //afecta a todos 
+            });
+
+            $(".red").click(function(){
+                $(this).fadeOut(1000);
+            })
+            
+        });
+    </script>
+</body>
+</html>

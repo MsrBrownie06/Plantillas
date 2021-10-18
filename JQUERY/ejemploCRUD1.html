@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD en Departamentos</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+</head>
+
+<body class="container-fluid p-5">
+
+    <h1 class="text-center">Ejemplo de CRUD en Jquery</h1>
+    <br>
+    <div class="row d-flex justify-content-center">
+        <div class="col-6">
+            <label class="form-label">Numero</label>
+            <input class="form-control" type="text" id="cajaNumero"><br><br>
+            <label class="form-label">Nombre</label>
+            <input class="form-control" type="text" id="cajaNombre"><br><br>
+            <label class="form-label">Localidad</label>
+            <input class="form-control" type="text" id="cajaLocalidad"><br><br>
+
+            <div class="col d-flex justify-content-center">
+                <button class="btn btn-outline-success mx-2" type="button" id="botonInsertar">Insertar</button>
+                <button class="btn btn-outline-warning mx-2" type="button" id="botonModificar">Modificar</button>
+                <button class="btn btn-outline-danger mx-2" type="button" id="botonEliminar">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <table class="table table-striped" border="1" id="tablaDepartamentos">
+        <thead class="table-dark">
+            <tr>
+                <td>Numero</td>
+                <td>Nombre</td>
+                <td>Localidad</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        var urlApi = "https://apicruddepartamentosxml.azurewebsites.net"; //cambio de la url a la de XML
+
+        $(document).ready(function () {
+
+            cargarDepartamentos();
+
+            $("#botonInsertar").click(function () {
+
+                var request = "/api/departamentos";
+
+                var dept = getDepartamentoXML();
+                $.ajax({
+                    "url": urlApi + request,
+                    "method": "POST",
+                    "data": dept,
+                    "contentType": "application/XML",
+                    success: function () {
+                        console.log("INSERTADO!!!")
+                        cargarDepartamentos()
+                    }
+                })
+
+            });
+
+            $("#botonModificar").click(function () {
+
+                var request = "/api/departamentos";
+
+                var dept = getDepartamentoXML();
+                $.ajax({
+                    "url" : urlApi + request,
+                    "method" : "PUT",
+                    "data" : dept,
+                    "contentType" : "application/xml",
+                    success : function(){
+                        console.log("modificado!!!")
+                    }
+                })
+            });
+
+            $("#botonEliminar").click(function () {
+
+                var num = parseInt($("#cajaNumero").val());
+                var request = "/api/departamentos/" + num;
+
+                $.ajax({
+                    "url" : urlApi + request,
+                    "method" : "DELETE",
+                    success : function(){
+                        
+                    }
+                })
+
+            });
+
+        });
+
+        function getDepartamentoXML() {
+
+            var num = $("#cajaNumero").val();
+            var nom = $("#cajaNombre").val();
+            var loc = $("#cajaLocalidad").val();
+
+            var dept = "<Departamento> <IdDepartamento>" + num + "</IdDepartamento>"
+                + "<Nombre>" + nom + "</Nombre>" + "<Localidad>" + loc + "</Localidad> </Departamento>"
+
+            return dept;
+
+        }
+
+        function cargarDepartamentos() {
+            var request = "/api/departamentos";
+
+            $("#tablaDepartamentos tbody").empty()
+
+            $.get(urlApi + request, function (data) {
+
+                let departamentos = $(data).find("Departamento"); //obtenemos todos los departamentos de este ejemplo
+
+                //recorremos cada departamento, creamos el TR con sus TDs y lo insertamos en la tabla
+                $(departamentos).each(function () {
+
+                    let tr = $("<tr>")
+                    let tdNum = $("<td>", { "text": $(this).find("idDepartamento").text() })
+                    let tdNom = $("<td>", { "text": $(this).find("Nombre").text() })
+                    let tdLoc = $("<td>", { "text": $(this).find("Localidad").text() })
+
+                    tr.append(tdNum).append(tdNom).append(tdLoc);
+
+                    $("#tablaDepartamentos tbody").append(tr);
+
+                });
+
+            });
+        }
+    </script>
+</body>
+
+</html>

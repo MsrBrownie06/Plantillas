@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>General controles dinámicamente</h1>
+    <label>Introduzca un texto: </label>
+    <input type="text" id="text">
+    <br/><br/>
+    <button type="button" id="botonCrear">Crear Titulo</button>
+    <br/><br/>
+    <div id="dad"></div>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $("#botonCrear").click(function(){
+
+                var texto = $("#text").val();
+                var h1 = $("<h1>");
+
+                h1.text(texto);
+                h1.css({"color":"purple","background-color":"lightblue"});
+
+                $("#dad").append(h1);
+
+                //CREAREMOS LOS CONTROLES CON JSON
+                
+                var h2 = $("<h1>", {"text":texto, 
+                    "style" : "color:yellow"})
+
+                h2.appendTo($("#dad"))
+
+
+                //cambio de color a los hijos
+
+                h1.click(function(){
+                    var texto = $("#text").val();
+                    alert(texto);
+                })
+            });
+
+        });
+
+    </script>
+</body>
+</html>

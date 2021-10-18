@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salario de empleados</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <style>
+        .apellido:hover {
+            color: darkturquoise
+        }
+    </style>
+</head>
+
+<body class="container-fluid bg-dark text-white">
+    <h1 class="text-center pt-4">Consumo Api Empleados Cliente</h1>
+    <div class="row d-flex justify-content-center text-center m-5">
+        <label class="form-label fw-bold">Introduzca un salario:</label>
+        <input id="salary" type="text" class="form-input col-6">
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center ">
+            <button id="buscar" class="btn btn-outline-success">Buscar Empleados</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <table id="empleados" class="table text-center fw-bold mt-4">
+                <thead class="table-success text-success ">
+                    <tr>
+                        <td>APELLIDO ENLACE</td>
+                        <td>APELLIDO</td>
+                        <td>OFICIO</td>
+                        <td>SALARIO</td>
+                    </tr>
+                </thead>
+                <tbody class="text-white">
+
+                </tbody>
+            </table>
+        </div>
+        <div id="empleado" class="col-6"></div>
+    </div>
+
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        var urlEmp = "https://apiempleadosspgs.azurewebsites.net";
+
+        $(document).ready(function () {
+
+            $("#buscar").click(function () {
+
+                let salario = $("#salary").val();
+                var request = "/api/Empleados/EmpleadosSalario/" + salario
+
+
+                $.ajax({
+                    "url": urlEmp + request,
+                    "method": "GET",
+                    "dataType": "JSON",
+                    success: function (data) {
+                        $("#empleados tbody").empty();
+
+                        $.each(data, function (index, empleado) {
+
+                            let tr = $("<tr>");
+
+                            //prueba apellido pero con un enla y la etiqueta <a>
+                            let tdApeEn = $("<td>");
+                            let aApe = $("<a>", { "text": empleado.apellido, "data-id": empleado.idEmpleado, "href": "#" });
+
+                            tdApeEn.append(aApe);
+
+                            aApe.click(function () {
+
+                                let id = $(this).data("id");
+                                mostrarEmpleado(id);
+
+                            });
+
+                            //fin prueba del enlace
+                            let tdApe = $("<td>", { "text": empleado.apellido, "data-id": empleado.idEmpleado, "class": "apellido" });
+                            let tdOfi = $("<td>", { "text": empleado.oficio });
+                            let tdSal = $("<td>", { "text": empleado.salario });
+
+                            tdApe.click(function () {
+
+                                let id = $(this).data("id");
+                                mostrarEmpleado(id);
+
+                            });
+
+                            tr.append(tdApeEn);
+                            tr.append(tdApe);
+                            tr.append(tdOfi);
+                            tr.append(tdSal);
+
+                            $("#empleados tbody").append(tr);
+
+                        });
+
+                    }
+                })
+
+            });
+
+        });
+
+        function mostrarEmpleado(id) {
+
+            $("#empleado").empty();
+
+            let request = "/api/Empleados/" + id;
+            let table = $("<table>", { "class": "table text-center fw-bold mt-4" });
+            let thead = $("<thead>", { "class": "table-info text-info" });
+            let tbody = $("<tbody>", { "class": "text-white" })
+            let trIni = $("<tr>");
+            let tdII = $("<td>", { "text": "ID" });
+            let tdAI = $("<td>", { "text": "APELLIDO" });
+            let tdOI = $("<td>", { "text": "OFICIO" });
+            let tdSI = $("<td>", { "text": "SALARIO" });
+            let tdDI = $("<td>", { "text": "DEPARTAMENTO" });
+
+            trIni.append(tdII).append(tdAI).append(tdOI).append(tdSI).append(tdDI)
+            thead.append(trIni)
+            $.ajax({
+                "url": urlEmp + request,
+                "method": "GET",
+                "dataType": "JSON",
+                success: function (data) {
+                    let tr = $("<tr>")
+                    let tdId = $("<td>", { "text": data.idEmpleado })
+                    let tdApe = $("<td>", { "text": data.apellido })
+                    let tdOfi = $("<td>", { "text": data.oficio })
+                    let tdSal = $("<td>", { "text": data.salario })
+                    let tdDept = $("<td>", { "text": data.departamento })
+
+                    tr.append(tdId).append(tdApe).append(tdOfi).append(tdSal).append(tdDept);
+                    tbody.append(tr)
+
+                    table.append(thead).append(tbody)
+
+                    $("#empleado").append(table);
+
+                }
+            })
+
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

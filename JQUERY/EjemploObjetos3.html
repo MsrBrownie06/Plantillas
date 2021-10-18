@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parrafos</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Ejemplo con EACH y colores aleatorios</h1>
+    <div id="contenedor"></div>
+    <script>
+
+        $(document).ready(function () {
+
+
+            for (let x = 0; x < 5; x++) {
+
+                let parrafo = $("<p>", { "text": "parrafo numero " + x })
+
+                parrafo.click(function () {
+
+                    $("p").each(function () {
+
+                        let R = parseInt((Math.random() * 254) + 1);
+                        let G = parseInt((Math.random() * 254) + 1);
+                        let B = parseInt((Math.random() * 254) + 1);
+
+                        let color = R + "," + G + "," + B
+
+
+                        console.log(color)
+                        
+                        $(this).css("color", "rgb(" + color + ")");
+
+                    });
+
+                });
+
+                $("#contenedor").append(parrafo);
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de XML con Atributos</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Lista de Hospitales con sus atributos</h1>
+
+    <Button type="button" id="botonObtener">Cargar los datos de los hospitales</Button>
+    <br><br>
+    <table border="1" id="tabla">
+
+        <thead>
+
+            <tr>
+                <th>NOMBRE</th>
+                <th>DIRECCION</th>
+                <th>TELEFONO</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $("#botonObtener").click(function(){
+
+                $.get("./doc/xml/hospital_atributos.xml", function(data){
+
+                    $(data).find("HOSPITAL").each(function(){
+
+                        let tr = $("<tr>")
+                        //para recuperar el valor de un atributo
+                        let nombre = $("<td>",{"text":$(this).attr("NOMBRE")}) 
+                        let direccion = $("<td>",{"text":$(this).attr("DIRECCION")}) 
+                        let telefono = $("<td>",{"text":$(this).attr("TELEFONO")}) 
+                        
+                        tr.append(nombre)
+                        tr.append(direccion)
+                        tr.append(telefono)
+
+                        //es igual que es CSS para que los datos se coloque en el TBODY que esta dentro de la TABLA
+                        $("#tabla tbody").append(tr);
+                        
+
+                    });
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

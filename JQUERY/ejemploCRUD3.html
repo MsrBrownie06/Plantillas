@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+</head>
+
+<body class="container-fluid">
+    <h1 class="text-center mt-4">EMPLEADOS CON OFICIO</h1>
+    <div class="row my-3 d-flex justify-content-center">
+        <div class="col-4">
+            <div class="input-group my-3">
+                <select class="form-select " id="oficios"></select>
+                <button id="mostrar" class="btn btn-outline-info" type="button">mostrar</button>
+            </div>
+            <div class="input-group col-3 mt-4">
+                <input id="salario" class="form-control" placeholder="Incremento a todo un oficio" type="number">
+                <button id="incrementar" class="btn btn-outline-success" type="button" value="">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-6">
+            <table id="empleados" class="table">
+                <thead class="table-dark text-center fw-bold">
+                    <tr>
+                        <td>apellido</td>
+                        <td>oficio</td>
+                        <td>salario</td>
+                        <td>director</td>
+                        <td>Incremento Individual</td>
+                    </tr>
+                </thead>
+                <tbody class="text-center"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        let urlEmp = "https://apiempleadosaction.azurewebsites.net";
+
+        $(document).ready(function () {
+
+            cargarOficios();
+
+            $("#mostrar").click(function () {
+
+                let oficio = $("#oficios").val();
+                $("#incrementar").attr("value", oficio);
+                cargarEmpleadosOficio(oficio);
+
+            })
+
+            $("#incrementar").click(function () {
+
+                let valOficio = $(this).val();
+                let valSalario = $("#salario").val();
+
+                if (valOficio != "") {
+
+                    if (valSalario != "") {
+                        let request = "/api/Empleados/IncrementarSalarioOficios/" + valOficio + "/" + valSalario
+
+                        $.ajax({
+                            "url" : urlEmp + request,
+                            "method" : "PUT",
+                            success : function(){
+
+                                alert("Incremento al oficio "+valOficio+" realizado correctamente!!!")
+                                cargarEmpleadosOficio(valOficio);
+                            }
+                        })
+
+                    } else {
+                        alert("Debe introducir el incremento de salario para realizar esta accion")
+                    }
+
+                } else {
+                    alert("Debe cargar la tabla antes de realizar esta accion")
+                }
+
+            })
+
+        });
+
+        //funcion de la carga de empleados dependiendo del oficio seleccionado en la lista de oficios
+        function cargarEmpleadosOficio(oficio) {
+
+            $("#empleados tbody").empty();
+            let request = "/api/Empleados/GetEmpleadosOficio/empleadosoficio/" + oficio
+
+            $.ajax({
+                "url": urlEmp + request,
+                "method": "GET",
+                "dataType": "JSON",
+                success: function (data) {
+
+                    $.each(data, function (index, empleado) {
+
+                        let tr = $("<tr>");
+                        let tdApe = $("<td>", { "text": empleado.apellido })
+                        let tdOfi = $("<td>", { "text": empleado.oficio })
+                        let tdSal = $("<td>", { "text": empleado.salario , "class" : "fw-bold"})
+                        let tdDir = $("<td>", { "text": empleado.director })
+
+                        let tdInpSal = salarioIndividual(empleado.idEmpleado,empleado.oficio);
+                        tr.append(tdApe).append(tdOfi).append(tdSal).append(tdDir).append(tdInpSal)
+
+                        $("#empleados tbody").append(tr);
+
+                    });
+                }
+            })
+
+        }
+
+        //funcion de crear objetos de la tabla
+        function salarioIndividual(idEmpleado,oficio) {
+
+            // <div class="input-group col-3 mt-4">
+            //     <input id="salario" class="form-control" placeholder="Incremento a todo un oficio" type="number">
+            //     <button class="btn btn-outline-success" type="button">+</button>
+            // </div>
+            let td = $("<td>");
+            let div = $("<div>", { "class": "input-group" });
+            let input = $("<input>", {
+                "class": "form-control",
+                "type": "number",
+                "placeholder": "Incremento Individual"
+            })
+            let button = $("<button>", {
+                "class": "btn btn-outline-warning",
+                "type": "button",
+                "data-idemp": idEmpleado,
+                "value" : oficio,
+                "text": "+"
+            })
+
+            button.click(function () {
+
+                let valSalarioIndividual = parseInt($(this).parent()[0].firstElementChild.value); //haciendo pruebas
+
+                console.log(valSalarioIndividual)
+                
+                let id = $(this).data("idemp");
+                let oficio = $(this).val();
+                cambiarSalarioIndividual(id,valSalarioIndividual,oficio)
+
+            });
+
+            div.append(input).append(button);
+            td.append(div);
+            return td;
+        }
+
+        //funcion de incrementar el salario de un empleado
+        function cambiarSalarioIndividual(idEmp,valSalarioInd,oficio) {
+
+            let request = "/api/Empleados/IncrementarSalario/"+idEmp+"/"+valSalarioInd;
+
+            $.ajax({
+                "url" : urlEmp + request,
+                "method" : "PUT",
+                success : function(){
+                    alert("Incremento realizado correctamente!!!")
+                    cargarEmpleadosOficio(oficio);
+                }
+            })
+
+        }
+
+        //funcion de carga inicial de la lista de oficios
+        function cargarOficios() {
+
+            let request = "/api/Empleados/GetOficios/oficios";
+
+            $.ajax({
+                "url": urlEmp + request,
+                "method": "GET",
+                "dataType": "JSON",
+                success: function (data) {
+
+                    $.each(data, function (index, valor) {
+
+                        let opcion = $("<option>", { "text": valor, "value": valor });
+                        $("#oficios").append(opcion);
+
+                    });
+
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>

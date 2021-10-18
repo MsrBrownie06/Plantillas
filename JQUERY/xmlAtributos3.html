@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varios XML con atributos</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Busquedas XML</h1>
+    <label>apellido: </label>
+    <input type="text" id="cajaApellido" />
+    <button type="button" id="botonApellidos">Buscar Apellidos</button>
+
+    <hr>
+
+    <label>CODIGO HOSPITAL</label>
+    <input type="text" id="cajaHospital">
+    <button type="button" id="botonHospital">Buscar Hospital</button>
+
+    <hr>
+
+    <div id="contenido"></div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#botonHospital").click(function () {
+
+                let codigo = $("#cajaHospital").val();
+
+                $.get("./doc/xml/hospital_atributos.xml", function (data) {
+
+                    //HOSPITAL[HOSPITAL_COD=14]
+                    let filtro = "HOSPITAL[HOSPITAL_COD=" + codigo + "]";
+
+                    //CAPTURAMOS EL NODO DE HOSPITAL PARA DESPUES RECUPERAR LOS DATOS NECESARIOS
+                    let nodoHospital = $(data).find(filtro).first(); //Nos dara el primer dato que encuentre
+
+                    //AHORA ATRAPAMOS EL NOMBRE DEL nodoHospital
+                    var nombre = nodoHospital.attr("NOMBRE");
+
+                    //VISTA EN CONSOLA DE LOS DATOS
+                    console.log(filtro)
+                    console.log(nodoHospital)
+                    console.log(nombre)
+
+                    //PINTAMOS EL CONTENIDO
+                    $("#contenido").html("<h1>El nombre del hospital es: " + nombre + "</h1>")
+
+                });
+
+            });
+
+            $("#botonApellidos").click(function () {
+
+                $("#contenido").text("");
+                let apellido = $("#cajaApellido").val();
+
+                $.get("./doc/xml/empleados.xml", function (data) {
+
+                    let filtroAp = "APELLIDO:contains(" + apellido + ")";
+
+                    //SI NO HAY NADA EN EL ARRAY, SE MUESTRA AL CLIENTE QUE NO HAY TAL DATO EN EL XML
+                    if ($(data).find(filtroAp).length == 0) {
+
+                        $("#contenido").html("<h1 style='color:red'>NO EXISTE ESE APELLIDO</h1>")
+
+                    } else {
+
+                        //RECORREMOS CON EL each YA QUE PUEDEN HABER MAS DE UN ELEMENTO
+                        $(data).find(filtroAp).each(function () {
+
+                            //OBTENEMOS EL APELLIDO
+                            let ape = $("<h1>", { "text": $(this).text(),"style":"color:green" });
+
+                            //PINTAMOS EL APELLIDO
+                            $("#contenido").append(ape)
+
+                        })
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 con Math</title>
+    <script src="./js/jquery-3.6.0.min.js" ></script>
+</head>
+<body>
+    
+    <form>
+        <label>dia: </label><input type="text" id="dia">
+        <br/><br/>
+        <label>mes: </label><input type="text" id="mes">
+        <br/><br/>
+        <label>ano: </label><input type="text" id="ano">
+        <br/><br/>
+        <button type="button">Mostrar día de la semana</button>
+        <br /><br />
+        <b><span style="font-size: 40px;"></span></b>
+
+    </form>
+
+    <script>
+
+$(document).ready(function () {
+            let dias = new Array("Sábado", "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes");
+            console.log(dias);
+
+            $("button").click(function () {
+
+                let dia = parseInt($("#dia").val());
+                let mes = parseInt($("#mes").val());
+                let anyo = parseInt($("#ano").val());
+
+                if (dia != "" && mes != "" && anyo != "") {
+
+                    let mes1, anyo4, anyo100, anyo400, primero, segundo, final;
+
+                    mes1 = Math.trunc(((mes + 1) * 3) / 5)
+                    console.log(mes1)
+
+                    anyo4 = Math.trunc(anyo / 4)
+                    console.log(anyo4)
+
+                    anyo100 = Math.trunc(anyo / 100)
+                    console.log(anyo100)
+
+                    anyo400 = Math.trunc(anyo / 400)
+                    console.log(anyo400)
+
+                    primero = Math.trunc(dia + (mes * 2) + anyo + mes1 + anyo4 - anyo100 + anyo400 + 2)
+                    console.log(primero)
+
+                    segundo = Math.trunc(primero / 7)
+                    console.log(segundo);
+
+                    final = Math.trunc(primero - (segundo * 7))
+                    console.log(final);
+
+                    $("span").text(dias[final])
+
+                }
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

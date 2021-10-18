@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD en Departamentos</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+</head>
+<body class="container-fluid p-5">
+    
+    <h1>Ejemplo de CRUD en Jquery</h1>
+    <br>
+    <label class="form-label">Numero</label>
+    <input class="form-control" type="text" id="cajaNumero"><br><br>
+    <label class="form-label">Nombre</label>
+    <input class="form-control" type="text" id="cajaNombre"><br><br>
+    <label class="form-label">Localidad</label>
+    <input class="form-control" type="text" id="cajaLocalidad"><br><br>
+
+    <button class="btn btn-outline-success" type="button" id="botonInsertar">Insertar</button>
+    <button class="btn btn-outline-warning" type="button" id="botonModificar">Modificar</button>
+    <button class="btn btn-outline-danger" type="button" id="botonEliminar">Eliminar</button>
+
+    <br><br>
+
+    <table class="table table-striped" border="1" id="tablaDepartamentos">
+        <thead class="table-dark">
+            <tr>
+                <td>Numero</td>
+                <td>Nombre</td>
+                <td>Localidad</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        var urlApi = "https://apicruddepartamentoscore.azurewebsites.net";
+
+        $(document).ready(function(){
+
+            cargarDepartamentos();
+
+            $("#botonInsertar").click(function(){
+
+                var num = $("#cajaNumero").val();
+                var nom = $("#cajaNombre").val();
+                var loc = $("#cajaLocalidad").val();
+                var request = "/api/departamentos";
+
+                var dept = new Object();
+                //Propiedades dinamicas, NO LAS INVENTAMOS
+                dept.numero = parseInt(num)
+                dept.nombre = nom
+                dept.localidad = loc
+                //Una vez tenido el objeto, se debe transformar a un formato JSON con el metodo de JAVASCRIPT: JSON.stringfy(OBJETO)
+                var json = JSON.stringify(dept);
+
+                console.log(json);
+                //Para enviar informacion al servicio, se realiza mediante el atributo DATA. Si enviamos data, se debe incluir el contentType, 
+                //una propiedad que indica el tipo de dato que se envia el servicio
+                //contentType utiliza el MIME TYPE: applicationjson
+                $.ajax({
+                    "url" : urlApi + request,
+                    "type" : "POST",
+                    "data" : json,
+                    "contentType" : "application/json", //tipo de datos enviado
+                    "success" : function(){
+                        cargarDepartamentos();
+                    },
+                    "error" : function(){
+                        cargarDepartamentos();
+                    }
+                })
+            });
+
+            $("#botonModificar").click(function(){
+                var num = $("#cajaNumero").val();
+                var nom = $("#cajaNombre").val();
+                var loc = $("#cajaLocalidad").val();
+                var request = "/api/departamentos";
+
+                var dept = new Object();
+                //Propiedades dinamicas, NO LAS INVENTAMOS
+                dept.numero = parseInt(num)
+                dept.nombre = nom
+                dept.localidad = loc
+                //Una vez tenido el objeto, se debe transformar a un formato JSON con el metodo de JAVASCRIPT: JSON.stringfy(OBJETO)
+                var json = JSON.stringify(dept);
+
+                console.log(json);
+               
+                $.ajax({
+                    "url" : urlApi + request,
+                    "type" : "PUT",
+                    "data" : json,
+                    "contentType" : "application/json", //tipo de datos enviado
+                    "success" : function(){
+                        cargarDepartamentos();
+                    },
+                    "error" : function(){
+                        cargarDepartamentos();
+                    }
+                })
+            });
+
+            $("#botonEliminar").click(function(){
+                var num = parseInt($("#cajaNumero").val());
+                var request = "/api/departamentos/"+num;
+
+                $.ajax({
+                    "url" : urlApi + request,
+                    "type" : "DELETE",
+                    "success" : function(){
+                        cargarDepartamentos();
+                    },
+                    "error" : function(){
+                        cargarDepartamentos();
+                    }
+                })
+
+
+            });
+
+        });
+        
+        function cargarDepartamentos(){
+            var request = "/api/departamentos";
+            $.ajax({
+                "url" : urlApi + request,
+                "method" : "GET",
+                "dataType" : "JSON",
+                "success" : function(data){
+
+                    $.each(data, function(index, dept){
+                        let tr = $("<tr>")
+                        let tdNumero = $("<td>",{"text" : dept.numero})    
+                        let tdNombre = $("<td>",{"text" : dept.nombre})    
+                        let tdLocalidad = $("<td>",{"text" : dept.localidad})
+                        
+                        tr.append(tdNumero)
+                        tr.append(tdNombre)
+                        tr.append(tdLocalidad)
+
+                        $("#tablaDepartamentos tbody").append(tr)
+
+                    })
+
+                }
+            })
+        }
+    </script>
+</body>
+</html>

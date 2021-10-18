@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica con XML</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="col-12 text-center">
+        <h1>DEPARTAMENTOS con NOMBRE y LOCALIDAD</h1>
+    </div>
+    <div id="botones" ></div>
+    <hr>
+    <div id="contenedor"></div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            //creacion de botones
+            $.get("./doc/xml/departamentosetiquetas.xml", function (data) {
+
+                $(data).find("DEPARTAMENTO").each(function () {
+                    let codigo = $(this).find("NUMERO").text();
+
+                    let boton = $("<button>", { "data-codigo": codigo, "text": "DETALLES " + codigo, "style": "margin:5px" })
+                    console.log(boton);
+
+                    //evento del boton
+                    boton.click(function () {
+
+                        let codigo = $(this).data("codigo");
+                        console.log(codigo);
+
+                        $.get("./doc/xml/departamentosetiquetas.xml", function (data) {
+
+                            $(data).find("DEPARTAMENTO").each(function () {
+
+                                let numero = $(this).find("NUMERO").text();
+
+                                if (numero == codigo) {
+                                    let nombre = $(this).find("NOMBRE").text();
+                                    let localidad = $(this).find("LOCALIDAD").text();
+                                    console.log(nombre)
+                                    console.log(localidad)
+
+                                    $("#contenedor").html("Nombre del Departamento: " + nombre + "<br/>Localidad del departamento: " + localidad);
+                                }
+
+                            });
+
+                        });
+
+                    });
+
+                    $("#botones").append(boton);
+                })
+
+            })
+
+
+
+        });
+
+    </script>
+</body>
+
+</html>

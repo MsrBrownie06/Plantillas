@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados de cada Departamento</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+</head>
+
+<body class="container-fluid p-3">
+    <div class="row">
+        <h1 class="text-center">Departamentos</h1>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <table id="departamentos" class="table table-bordered border-dark table-striped text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <td>numero</td>
+                        <td>nombre</td>
+                        <td>localidad</td>
+                        <td>Accion</td>
+                        <td>Accion Enlace</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <table id="empleados" class="table table-success table-bordered border-success table-striped text-center">
+                <thead>
+                    <tr class="text-success fw-bold">
+                        <td>Apellido</td>
+                        <td>Oficio</td>
+                        <td>Salario</td>
+                        <td>Departamento</td>
+                    </tr>
+                </thead>
+                <tbody class="text-dark fw-bold">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        var urlDep = "https://apicruddepartamentoscore.azurewebsites.net";
+        var urlEmp = "https://apiempleadosspgs.azurewebsites.net";
+
+        $(document).ready(function () {
+
+            cargaDepartamentos();
+
+        });
+
+        function cargaDepartamentos() {
+            let request = "/api/Departamentos"
+            $.ajax({
+                "url": urlDep + request,
+                "method": "GET",
+                "dataType": "JSON",
+                success: function (data) {
+
+                    $.each(data, function (index, dept) {
+
+                        let tr = $("<tr>")
+                        let tdNumero = $("<td>", { "text": dept.numero })
+                        let tdNombre = $("<td>", { "text": dept.nombre })
+                        let tdLocalidad = $("<td>", { "text": dept.localidad })
+                        let tdAccion = $("<td>")
+                        let accion = $("<button>", { "text": "Empleados", "class": "btn btn-outline-info", "type": "button", "data-num": dept.numero })
+
+                        //prueba con enlace de A
+                        let tdAccionA = $("<td>")
+                        let accionA = $("<a>", { "text": "Empleados", "href": "#", "data-num": dept.numero })
+                        tdAccionA.append(accionA);
+
+                        accionA.click(function () {
+                            let numDept = $(this).data("num");
+
+                            mostrarEmpleados(numDept);
+                        });
+                        //fin prueba con enlace de A
+
+                        tdAccion.append(accion);
+
+                        accion.click(function () {
+                            let numDept = $(this).data("num");
+
+                            mostrarEmpleados(numDept);
+                        });
+
+                        tr.append(tdNumero)
+                        tr.append(tdNombre)
+                        tr.append(tdLocalidad)
+                        tr.append(tdAccion)
+                        //prueba con enlace de A
+                        tr.append(tdAccionA)
+
+                        $("#departamentos tbody").append(tr);
+                    })
+
+                }
+            })
+        }
+
+        function mostrarEmpleados(numDept) {
+            $("#empleados tbody").empty();
+            let request = "/api/Empleados/EmpleadosDepartamento/" + numDept
+
+            $.ajax({
+                "url": urlEmp + request,
+                "method": "GET",
+                "dataType": "JSON",
+                success: function (data) {
+
+                    $.each(data, function (index, empleado) {
+
+                        let tr = $("<tr>")
+                        let tdapellido = $("<td>", { "text": empleado.apellido })
+                        let tdoficio = $("<td>", { "text": empleado.oficio })
+                        let tdsalario = $("<td>", { "text": empleado.salario })
+                        let tddepartamento = $("<td>", { "text": empleado.departamento })
+
+                        tr.append(tdapellido)
+                        tr.append(tdoficio)
+                        tr.append(tdsalario)
+                        tr.append(tddepartamento)
+
+                        $("#empleados tbody").append(tr);
+
+                    })
+
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

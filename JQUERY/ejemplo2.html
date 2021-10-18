@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha de nacimiento</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <label>dia: </label><input type="text" id="dia">
+    <br /><br />
+    <label>mes: </label><input type="text" id="mes">
+    <br /><br />
+    <label>anyo: </label><input type="text" id="anyo">
+    <br /><br />
+    <button type="button">Mostrar día de la semana</button>
+    <br /><br />
+    <b><span style="font-size: 40px;"></span></b>
+
+    <script>
+        $(document).ready(function () {
+            let dias = new Array("Sábado", "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes");
+
+            $("button").click(function () {
+
+
+                let dia = Number($("#dia").val());
+                let mes = Number($("#mes").val());
+                let anyo = Number($("#anyo").val());
+                if (dia != "" && mes != "" && anyo != "") {
+
+                    let mes1 = 0;
+                    mes1 = parseInt(((mes + 1) * 3) / 5)
+
+                    let anyo4 = 0;
+                    anyo4 = parseInt(anyo / 4)
+
+                    let anyo100 = 0;
+                    anyo100 = parseInt(anyo / 100)
+
+                    let anyo400 = 0;
+                    anyo400 = parseInt(anyo / 400)
+
+                    let primero = 0;
+                    primero = parseInt(dia + (mes * 2) + anyo + mes1 + anyo4 - anyo100 + anyo400 + 2)
+
+                    let segundo = 0;
+                    segundo = parseInt(primero / 7)
+
+                    let final = 0;
+                    final = parseInt(primero - (segundo * 7))
+
+                    console.log(dias);
+                    console.log(mes1)
+                    console.log(anyo4)
+                    console.log(anyo100)
+                    console.log(anyo400)
+                    console.log(primero)
+                    console.log(segundo)
+                    console.log(final);
+
+                    $("span").text(dias[final])
+
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

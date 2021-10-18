@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imagenes</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <style>
+        .anime{
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>IMAGENES PROPIAS</h1>
+
+    <img class="anime" src="./img/DRAGON DE LA IRA-MELIODAS.jpg">
+    <img class="anime" src="./img/SERPIENTE DE LA ENVIDIA-DIANE.jpg">
+    <img class="anime" src="./img/ZORRO DE LA CODICIA-BAN.jpg">
+    <img class="anime" src="./img/OSO DE LA PEREZA-HARLEQUIN.jpg">
+    <img class="anime" src="./img/CABRA DE LA LUJURIA-GOWTHER.jpg">
+    <img class="anime" src="./img/LA GULA DEL CERDO-MERLIN.jpg">
+    <img class="anime" src="./img/LEÓN DEL ORGULLO-ESCANOR .jpg">
+
+    <script>
+        var original;
+        $(document).ready(function(){
+
+            $(".anime").mouseover(function(){
+                original = $(this).attr("src");
+                $(this).attr("src", "./img/LOGO_PERSONAL.png")
+            });
+
+            $(".anime").mouseout(function(){
+                $(this).attr("src", original)
+            });
+
+            $(".anime").click(function(){
+                $(this).fadeOut(2500);
+            });
+
+            $("h1").click(function(){
+                $(this).text("imagenes propias")
+            })
+
+        });
+    </script>
+
+</body>
+</html>

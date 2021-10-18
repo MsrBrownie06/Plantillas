@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamentos con etiquetas</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>DEPARTAMENTOS</h1>
+    <p>apareceran una lista con su nombre y localidad. Buscar el departamento para despues recoger los datos de NOMBRE y LOCALIDAD</p>
+    <button type="button" id="carga">Cargar lista de datos</button>
+
+    <ul id="lista"></ul>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $("#carga").click(function(){
+
+                $.get("./doc/xml/departamentosetiquetas.xml",function(data){
+
+                    $(data).find("DEPARTAMENTO").each(function(){
+
+                        let nombre = $(this).find("NOMBRE").text();
+                        let localidad = $(this).find("LOCALIDAD").text();
+
+                        console.log($(this).find("NOMBRE"))
+                        console.log($(this).find("LOCALIDAD"))
+
+                        let li = $("<li>",{"text":nombre+" ----> "+localidad})
+                        
+                        $("#lista").append(li);
+
+                    });
+
+                })
+
+            });
+
+        });
+
+    </script>
+</body>
+</html>

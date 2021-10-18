@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadores</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+</head>
+
+<body class="container-fluid bg-dark text-white">
+    <header class="row text-center d-flex justify-content-center">
+        <h1 class="col-12 pt-5">Lista Jugadores / Escoja uno para saber su información</h1>
+        <div class="col-4 my-5">
+            <select class="form-select" id="listaJugadores"></select>
+        </div>
+    </header>
+
+    <main class=" row d-flex justify-content-center">
+
+        <div class="col-4 text-dark">
+            <div class="card" id="jugador"></div>
+        </div>
+    </main>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $("#listaJugadores").change(function () {
+
+                $("#jugador").empty();
+                let posicion = $(this).val();
+
+                $.ajax({
+                    "url": "./doc/json/jugadores.json",
+                    "method": "GET",
+                    "dataType": "JSON",
+                    "success": function (data) {
+
+                        $.each(data.jugadores, function (index, jugador) {
+
+                            //otra forma en vez de usar un IF, es utilizar la variable index como numero de un array.
+
+                            if (posicion == index) {
+
+                                let numero = $("<h3>",{"text" : "El numero es: "+jugador.numero});
+                                let nombre = $("<h3>",{"text" : "Su nombre es: "+jugador.nombre});
+                                let posicionJugador = $("<h3>",{"text" : "Su posicion es : "+jugador.posicion});
+                                let edad = $("<h3>",{"text" : "Su edad es: "+jugador.edad});
+                                let imagen = jugador.imagen;
+
+                                let img = $("<img>", { "src": imagen, "class": "card-img-top" })
+
+                                let bodyCard = $("<div>", {
+                                    "class" : "card-body"
+                                })
+
+                                bodyCard.append(numero)
+                                bodyCard.append(nombre)
+                                bodyCard.append(posicionJugador)
+                                bodyCard.append(edad)
+
+                                $("#jugador").append(img)
+                                $("#jugador").append(bodyCard)
+                            }
+
+                        })
+
+                    }
+
+                });
+
+            });
+
+            $.ajax({
+                "url": "./doc/json/jugadores.json",
+                "method": "GET",
+                "dataType": "JSON",
+                "success": function (data) {
+
+                    $.each(data.jugadores, function (index, jugador) {
+
+                        let nombre = jugador.nombre;
+                        let opcion = $("<option>", { "text": nombre, "value": index })
+
+                        $("#listaJugadores").append(opcion);
+
+                    });
+
+                }
+            })
+
+        });
+
+    </script>
+
+</body>
+
+</html>

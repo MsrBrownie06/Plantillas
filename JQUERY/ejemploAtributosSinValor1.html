@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenes</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <input id="rango" type="range" min="1" max="10">
+    <hr>
+    <div id="contenedorBotones"></div>
+    <hr>
+    <div id="contenedorImagenes"></div>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $("#rango").change(function(){
+
+                let cantidad = $("#rango").val();
+                $("#contenedorBotones").text("");
+                $("#contenedorImagenes").text("");
+
+                for( let x = 0 ; x < cantidad ; x++){
+                    //creo la imagen con los parametros de SRC, WIDTH, DATA-posicion
+                    let imagen = $("<img>",{"src":"./img/ZORRO DE LA CODICIA-BAN.jpg","width":"300px","data-posicion":x});
+
+                    //creo el boton con los parametros de TYPE, TEXT, DATA-posicion
+                    let boton = $("<button>",{"type":"button","text":"imagen"+(x+1),"data-posicion":x});
+
+                    //creo el evento del boton creado en este momento
+                    boton.click(function(){
+                        //obtengo el DATA-posicion del boton
+                        let numBoton = $(this).data("posicion");
+
+                        //recorro cada imagen para comprobar el DATA-posicion
+                        $("img").each(function(){
+
+                            //compruebo con un if else si concuerda la DATA-posicion del boton y de la imagen
+                            if($(this).data("posicion") == numBoton){
+
+                                //cambio el atributo SRC de la imagen por otra
+                                $(this).attr("src","./img/DRAGON DE LA IRA-MELIODAS.jpg");
+
+                            }
+
+                        })
+                    })
+
+                    //funciona en navegadores modernos, pero es un evento que actua en un distinto "CUANDO". 
+                    // boton.click(function(){
+                    //     imagen.attr("src","./img/DRAGON DE LA IRA-MELIODAS.jpg")
+                    // })
+
+                    //coloco el boton creado en su propio contenedor
+                    $("#contenedorBotones").append(boton)
+
+                    //coloco la imagen en su propio contenedor
+                    $("#contenedorImagenes").append(imagen)
+                 
+                }
+
+            });
+
+        });
+
+    </script>
+</body>
+</html>

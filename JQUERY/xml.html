@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRUEBAS CON XML</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h1>Lectura de un XML Simple</h1>
+    <button type="button" id="botonLeer">Cargar lista de Empleados</button>
+
+    <ul id="lista"></ul>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#botonLeer").click(function () {
+
+                console.log("antes del servicio")
+
+                $.get("./doc/xml/empleados.xml", function (data) {
+
+                    console.log("Leyendo datos del servicio")
+
+                    //con esto buscaremos en el xml por el APELLIDO
+                    $(data).find("APELLIDO").each(function () {
+
+                        //Recuperamos el contenido del TAG
+                        let elemento = $("<li>", { "text": $(this).text() })
+
+                        //colocamos el elemento "li" en la lista "ul"
+                        $("#lista").append(elemento);
+                    });
+                    console.log(data)
+                });
+
+                console.log("despues del servicio")
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

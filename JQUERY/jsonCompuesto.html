@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON compuesto</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>JSON conjunto de clientes con getJSON</h1>
+    <button id="botonCli" type="button" class="btn btn-outline-primary">obtener clientes</button>
+    <div id="contenedor"></div>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            $("#botonCli").click(function(){
+
+                $.getJSON("./doc/json/clientessimples.json",function(data){
+
+                    //EN EL EACH TENDREMOS EN ESTE CASO EL INDICE/POSICION DE CADA OBJETO Y EL PROPIO OBJETO CON SUS PROPIEDADES DINAMICAS
+
+                    $.each(data.clientes, function(index, cliente){
+
+                        var nombre = cliente.nombre;
+
+                        var h3 = $("<h3>",{
+                            "text" : "La Posicion es: "+index+" y el Nombre es: "+nombre
+                        });
+
+                        $("#contenedor").append(h3)
+
+                    })
+
+                })
+
+            });
+
+        });
+
+    </script>
+</body>
+</html>
