@@ -5,12 +5,13 @@ import "./index.css";
 // import Saludo from './components/Saludo/Saludo';
 // import Metodos from './components/Metodos/Metodos';
 // import SumarNumeros from './components/SumarNumeros/SumarNumeros';
-import Padre from "./components/Padre/Padre";
+// import Padre from "./components/Padre/Padre";
+import Contador from "./components/Contador/Contador";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <div>
-    <Padre />
+    <Contador Inicio="5" />
   </div>,
   document.getElementById("root")
 );
