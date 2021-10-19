@@ -7,9 +7,9 @@ const ElTriplePadre = (num) => {
 function Padre() {
   return (
     <div>
-      <Matematicas num="5" elTriple={ElTriplePadre} />
-      <Matematicas num="8" elTriple={ElTriplePadre} />
-      <Matematicas num="12" elTriple={ElTriplePadre} />
+      <Matematicas Num="5" ElTriple={ElTriplePadre} />
+      <Matematicas Num="8" ElTriple={ElTriplePadre} />
+      <Matematicas Num="12" ElTriple={ElTriplePadre} />
     </div>
   );
 }

@@ -3,12 +3,12 @@ function Matematicas(props) {
     console.log("el doble de " + num + " es: " + num * 2);
   };
 
-  const { num, elTriple } = props;
+  const { Num, ElTriple } = props;
   return (
     <div>
-      <h1>Soy el numero {num}</h1>
-      <button onClick={() => ElDoble(num)}>Hacer el doble</button>
-      <button onClick={() => elTriple(num)}>Hacer el triple</button>
+      <h1>Soy el numero {Num}</h1>
+      <button onClick={() => ElDoble(Num)}>Hacer el doble</button>
+      <button onClick={() => ElTriple(Num)}>Hacer el triple</button>
     </div>
   );
 }
