@@ -14,7 +14,7 @@ function MatematicasDibujo(props) {
 
   return (
     <div>
-      <h1>{texto}</h1>
+      <h3>{texto}</h3>
       <button onClick={() => sumarNumeros()}>Sumar</button>
       <button onClick={() => multiplicar(num1, num2, textoIni)}>
         Multiplicar
