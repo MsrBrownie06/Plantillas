@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './components/App/App';
-import Saludo from './components/Saludo/Saludo';
-import Metodos from './components/Metodos/Metodos';
+// import Saludo from './components/Saludo/Saludo';
+// import Metodos from './components/Metodos/Metodos';
+import SumarNumeros from './components/SumarNumeros/SumarNumeros';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <div>
-    <Saludo nombre ="Alumno mio" edad="20"/>
-    <Saludo nombre ="Raul" edad="18"/>
-    <Metodos />
+    <SumarNumeros num1 = "6" num2="98"/>
+    <SumarNumeros num1 = "35" num2="15"/>
+    <SumarNumeros num1="9" num2="25"/>
   </div>
 ,
   document.getElementById('root') 

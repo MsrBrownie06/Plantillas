@@ -1,4 +1,4 @@
-import foto from '../../LOGO_PERSONAL.png';
+import foto from './../../assets/images/LOGO_PERSONAL.png';
 
 function SumarNumeros() {
 
@@ -8,8 +8,8 @@ function SumarNumeros() {
 
     return (
         <div>
-            <h1>SUMAR NUMEROS</h1>
-            <img src={foto} width="300px" alt="logo" /><br />
+            <h1>SUMAR NUMEROS Ejemplo Básico</h1>
+            <img src={foto} width="300px" alt="foto" /><br />
             <button style={{ backgroundColor: "darkgreen", color: "white" }} onClick={() => sumar(8, 12)}>Sumar numeros estaticos</button>
         </div>
     );
