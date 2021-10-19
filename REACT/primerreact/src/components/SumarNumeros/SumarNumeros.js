@@ -9,7 +9,6 @@ function SumarNumeros(props) {
         var num2 = parseInt(props.num2)
         console.log(num1 + " + " + num2 + " = " + (num1 + num2))
     };
-
     
     return (
         <div>

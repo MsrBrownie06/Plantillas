@@ -1,23 +1,15 @@
 //import logo from './logo.svg';
 import './App.css';
+import Saludo from './../Saludo/Saludo'
 
 function App() {
+  const metodoP = (descripcion) => {
+    console.log("Soy "+ descripcion)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Saludo nombre="Oscar" edad="20" metodoPadre={metodoP} />
+      <Saludo nombre="Sara" edad="22" metodoPadre={metodoP} />
     </div>
   );
 }
