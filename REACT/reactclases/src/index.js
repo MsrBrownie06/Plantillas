@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 // import App from "./Components/App/App";
-import Contador from "./Components/Contador/Contador";
+// import Contador from "./Components/Contador/Contador";
+import DibujosComplejos from "./Components/DibujosComplejos/DibujosComplejos";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Contador Inicio="10" />
-    <Contador Inicio="25" />
+    <DibujosComplejos />
   </React.StrictMode>,
   document.getElementById("root")
 );
