@@ -7,12 +7,15 @@ import "./index.css";
 // import SumarNumeros from './components/SumarNumeros/SumarNumeros';
 // import Padre from "./components/Padre/Padre";
 // import Contador from "./components/Contador/Contador";
-import PadreDibujo from "./components/PadreDibujo/PadreDibujo";
+// import PadreDibujo from "./components/PadreDibujo/PadreDibujo";
+import Car from "./components/Car/Car";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <div>
-    <PadreDibujo />
+    <Car Marca="Honda" Modelo="Civic" Aceleracion="20" VelocidadMaxima="220" />
+    <Car Marca="Peugeot" Modelo="307" Aceleracion="25" VelocidadMaxima="200" />
+    <Car Marca="Seat" Modelo="500" Aceleracion="15" VelocidadMaxima="160" />
   </div>,
   document.getElementById("root")
 );
