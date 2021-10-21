@@ -4,12 +4,13 @@ import "./index.css";
 // import App from "./Components/App/App";
 // import Contador from "./Components/Contador/Contador";
 // import DibujosComplejos from "./Components/DibujosComplejos/DibujosComplejos";
-import Deportes from "./Components/Deportes/Deportes";
+// import Deportes from "./Components/Deportes/Deportes";
+import Numeros from "./Components/Numeros/Numeros";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Deportes />
+    <Numeros />
   </React.StrictMode>,
   document.getElementById("root")
 );
