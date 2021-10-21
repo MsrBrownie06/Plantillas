@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 // import App from "./Components/App/App";
 // import Contador from "./Components/Contador/Contador";
-import DibujosComplejos from "./Components/DibujosComplejos/DibujosComplejos";
+// import DibujosComplejos from "./Components/DibujosComplejos/DibujosComplejos";
+import Deportes from "./Components/Deportes/Deportes";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <DibujosComplejos />
+    <Deportes />
   </React.StrictMode>,
   document.getElementById("root")
 );

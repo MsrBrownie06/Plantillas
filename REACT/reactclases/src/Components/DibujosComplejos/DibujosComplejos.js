@@ -9,7 +9,7 @@ class DibujosComplejos extends Component {
 
     var lista = [];
     for (let i = 1; i <= 5; i++) {
-      lista.push(<li>Numero: {i}</li>);
+      lista.push(<li key={i}>Numero: {i}</li>);
     }
     return lista;
   };
@@ -56,7 +56,7 @@ class DibujosComplejos extends Component {
         <button onClick={() => this.insertarNombre()}>Añadir Nombre</button>
         {this.state.nombres.map((objName, index) => {
           //A diferencia del codigo en metodo, aqui pondremos el return directo del codigo que deseemos
-          return <h3>{objName}</h3>;
+          return <h3 key={index}>{objName}</h3>;
         })}
       </div>
     );
