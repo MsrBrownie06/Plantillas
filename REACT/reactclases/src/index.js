@@ -5,12 +5,13 @@ import "./index.css";
 // import Contador from "./Components/Contador/Contador";
 // import DibujosComplejos from "./Components/DibujosComplejos/DibujosComplejos";
 // import Deportes from "./Components/Deportes/Deportes";
-import Numeros from "./Components/Numeros/Numeros";
+// import Numeros from "./Components/Numeros/Numeros";
+import Comics from "./Components/Comics/Comics";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Numeros />
+    <Comics />
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -23,6 +23,13 @@ class Numeros extends Component {
   render() {
     return (
       <div>
+        {/* {this.variable == 0 || this.variable == 2 ? (
+          <h1>Condicion true</h1>
+        ) : this.variable == 1 ? (
+          <h1>Condicion true</h1>
+        ) : (
+          <h1>Condicion false</h1>
+        )} */}
         <div>
           <h1>Resultado: {this.state.resultado}</h1>
           <button onClick={() => this.generarAleatorio()}>
