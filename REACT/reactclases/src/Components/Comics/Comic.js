@@ -23,6 +23,9 @@ class Comic extends Component {
         >
           Eliminar
         </button>
+        <button onClick={() => {
+          this.props.modificarComic(this.props.index);
+        }}>Modificar</button>
         <hr />
       </React.Fragment>
     );

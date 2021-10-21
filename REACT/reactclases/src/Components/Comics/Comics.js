@@ -80,10 +80,28 @@ class Comics extends Component {
     });
   };
 
-  modificarComic = (index) => {
-    var titulo = document.getElementById("titulo").value;
-    var imagen = document.getElementById("imagen").value;
-    var descripcion = document.getElementById("Descripcion").value;
+  modificarComic = (indexHijo) => {
+    var tituloNew = document.getElementById("titulo").value;
+    var imagenNew = document.getElementById("imagen").value;
+    var descripcionNew = document.getElementById("Descripcion").value;
+
+    var newComics = [];
+    this.state.comics.map((objComic, index) => {
+
+      if (indexHijo === index) {
+        objComic.titulo = tituloNew
+        objComic.imagen = imagenNew
+        objComic.descripcion = descripcionNew
+        newComics[index] = objComic
+      } else {
+        newComics[index] = objComic
+      }
+
+    });
+
+    this.setState({
+      comics: newComics
+    })
   };
 
   render() {
@@ -132,6 +150,7 @@ class Comics extends Component {
               selecionarFav={this.selectFavorito}
               index={index}
               eliminarComic={this.eliminarComic}
+              modificarComic={this.modificarComic}
             />
           );
         })}
