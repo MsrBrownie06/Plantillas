@@ -1,17 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Router from "./Components/Route/Router";
+import MenuRutas from "./Components/Rutas/MenuRutas/MenuRutas";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// import Cine from "./Components/Rutas/Cine/Cine";
+// import Home from "./Components/Rutas/Home/Home";
+// import Musica from "./Components/Rutas/Musica/Musica";
+// import Tv from "./Components/Rutas/Tv/Tv";
 import "./index.css";
 // import App from "./Components/App/App";
 // import Contador from "./Components/Contador/Contador";
 // import DibujosComplejos from "./Components/DibujosComplejos/DibujosComplejos";
 // import Deportes from "./Components/Deportes/Deportes";
 // import Numeros from "./Components/Numeros/Numeros";
-import Comics from "./Components/Comics/Comics";
+// import Comics from "./Components/Comics/Comics";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Comics />
+    <hr />
+    <MenuRutas />
+    <hr />
+    <Router />
   </React.StrictMode>,
   document.getElementById("root")
 );
