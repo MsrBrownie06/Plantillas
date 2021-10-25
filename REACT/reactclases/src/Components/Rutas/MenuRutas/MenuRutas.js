@@ -29,6 +29,9 @@ export default class MenuRutas extends Component {
           <li>
             <a href="/Select">Multiplicacion con select</a>
           </li>
+          <li>
+            <a href="/SelectMultiple">Seleccion Multiple</a>
+          </li>
         </ul>
       </div>
     );

@@ -51,7 +51,7 @@ export default class TablaMultiplicarSelect extends Component {
           <Button type="submit">mostrar Tabla</Button>
         </Form>
         <hr />
-        <Table striped bordered hover>
+        <Table striped bordered hover className="text-center">
           <thead>
             <tr>
               <td>Operacion</td>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Collatz from "../Formularios/Collatz";
 import EjemploSimple from "../Formularios/EjemploSimple";
+import SeleccionMultiple from "../Formularios/SeleccionMultiple";
 import TablaMultiplicar from "../Formularios/TablaMultiplicar";
 import TablaMultiplicarSelect from "../Formularios/TablaMultiplicarSelect";
 import Cine from "../Rutas/Cine/Cine";
@@ -22,6 +23,7 @@ export default class Router extends Component {
           <Route path="/collatz" component={Collatz} />
           <Route path="/Multiplicacion" component={TablaMultiplicar} />
           <Route path="/Select" component={TablaMultiplicarSelect} />
+          <Route path="/SelectMultiple" component={SeleccionMultiple} />
         </Switch>
       </BrowserRouter>
     );
