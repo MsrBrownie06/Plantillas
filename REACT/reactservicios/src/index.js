@@ -7,11 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import ServicioCustomers from "./Components/ServicioCustomers/ServicioCustomers";
 //import BuscadorCustomer from "./Components/BuscadorCustomer/BuscadorCustomer";
 //import BuscadorCoches from "./Components/BuscadorCoches/BuscadorCoches";
-import BuscadorCoches1 from "./Components/BuscadorCoches1/BuscadorCoches1";
+//import BuscadorCoches1 from "./Components/BuscadorCoches1/BuscadorCoches1";
+import MaestroDetalleDepartamentos from "./Components/MaestroDetalleDepartamentos/MaestroDetalleDepartamentos";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BuscadorCoches1 />
+    <MaestroDetalleDepartamentos />
   </React.StrictMode>,
   document.getElementById("root")
 );
