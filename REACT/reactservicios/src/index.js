@@ -1,13 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./Components/App/App";
+//import App from "./Components/App/App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
+//import ServicioCustomers from "./Components/ServicioCustomers/ServicioCustomers";
+//import BuscadorCustomer from "./Components/BuscadorCustomer/BuscadorCustomer";
+//import BuscadorCoches from "./Components/BuscadorCoches/BuscadorCoches";
+import BuscadorCoches1 from "./Components/BuscadorCoches1/BuscadorCoches1";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BuscadorCoches1 />
   </React.StrictMode>,
   document.getElementById("root")
 );
