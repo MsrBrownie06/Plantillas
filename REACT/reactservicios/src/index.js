@@ -1,18 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-//import App from "./Components/App/App";
+import App from "./Components/App/App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
+//import MaestroDetalleDept from "./Components/MaestroDetalleDepartamentos/MaestroDetalleDept";
+//import Router from "./Components/Route/Router";
+//import EmpleadosRouter from "./Components/RutasEmpleadosParametros/EmpleadosRouter";
 //import ServicioCustomers from "./Components/ServicioCustomers/ServicioCustomers";
 //import BuscadorCustomer from "./Components/BuscadorCustomer/BuscadorCustomer";
 //import BuscadorCoches from "./Components/BuscadorCoches/BuscadorCoches";
 //import BuscadorCoches1 from "./Components/BuscadorCoches1/BuscadorCoches1";
-import MaestroDetalleDepartamentos from "./Components/MaestroDetalleDepartamentos/MaestroDetalleDepartamentos";
+//import MaestroDetalleDepartamentos from "./Components/MaestroDetalleDepartamentos/MaestroDetalleDepartamentos";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MaestroDetalleDepartamentos />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
