@@ -14,6 +14,7 @@ export default class InsertarDepartamento extends Component {
   };
 
   insertarDepartamento = (e) => {
+    //asi no se recargara la pagina cuando se haga un submit
     e.preventDefault();
     var num = this.cajaNum.current.value;
     var nom = this.cajaNom.current.value;
@@ -28,6 +29,7 @@ export default class InsertarDepartamento extends Component {
     var request = "/webresources/departamentos/post";
     var url = Global.urlCrudDepartamentos + request;
     axios.post(url, departamento).then((res) => {
+      //despues de insertar un dato cambiamos el status
       this.setState({
         mensaje: "Departamento insertado correctamente",
         status: true,

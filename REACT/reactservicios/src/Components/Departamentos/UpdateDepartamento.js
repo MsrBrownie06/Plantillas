@@ -34,6 +34,7 @@ export default class UpdateDepartamento extends Component {
     var num = parseInt(this.cajaNum.current.value);
     var nom = this.cajaNom.current.value;
     var loc = this.cajaLoc.current.value;
+
     var departamento = {
       numero: num,
       nombre: nom,
@@ -43,6 +44,7 @@ export default class UpdateDepartamento extends Component {
     var request = "/webresources/departamentos/put";
     var url = Global.urlCrudDepartamentos + request;
     axios.put(url, departamento).then((res) => {
+      //despues de actualizar cambiamos el state
       this.setState({
         status: true,
       });

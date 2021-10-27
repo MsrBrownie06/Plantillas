@@ -18,6 +18,7 @@ export default class EliminarDepartamento extends Component {
     var request = "/webresources/departamentos/delete/" + id;
     var url = Global.urlCrudDepartamentos + request;
     axios.delete(url).then((res) => {
+      //despues de eliminar cambiamos el state
       this.setState({
         status: true,
       });

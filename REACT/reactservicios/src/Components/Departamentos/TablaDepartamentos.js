@@ -13,6 +13,7 @@ export default class TablaDepartamentos extends Component {
     var request = "/webresources/departamentos";
     var url = Global.urlCrudDepartamentos + request;
     axios.get(url).then((res) => {
+      //Despues de obtener los datos cambiamos el state
       this.setState({
         departamentos: res.data,
         status: true,
