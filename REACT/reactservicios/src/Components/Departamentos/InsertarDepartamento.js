@@ -1,5 +1,6 @@
 import axios from "axios";
 import Global from "../../Global";
+import { Redirect } from "react-router";
 import React, { Component } from "react";
 
 export default class InsertarDepartamento extends Component {
@@ -35,6 +36,9 @@ export default class InsertarDepartamento extends Component {
   };
 
   render() {
+    if (this.state.status === true) {
+      return <Redirect to="/departamentos" />;
+    }
     return (
       <div className="row justify-content-center">
         <div className="col-4">

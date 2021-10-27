@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Global from "../../Global";
+import { NavLink } from "react-router-dom";
 
 export default class TablaDepartamentos extends Component {
   state = {
@@ -24,7 +25,7 @@ export default class TablaDepartamentos extends Component {
   };
 
   render() {
-    if (this.state.status == true) {
+    if (this.state.status === true) {
       return (
         <div>
           <h1>Tabla de Departamentos</h1>
@@ -37,6 +38,7 @@ export default class TablaDepartamentos extends Component {
                 <td>NUMERO</td>
                 <td>NOMBRE</td>
                 <td>LOCALIDAD</td>
+                <td>ACCION</td>
               </tr>
             </thead>
             <tbody>
@@ -46,6 +48,41 @@ export default class TablaDepartamentos extends Component {
                     <td>{dept.numero}</td>
                     <td>{dept.nombre}</td>
                     <td>{dept.localidad}</td>
+                    <td>
+                      <NavLink
+                        to={
+                          "/detallesDepartamentos/" +
+                          dept.numero +
+                          "/" +
+                          dept.nombre +
+                          "/" +
+                          dept.localidad
+                        }
+                        className="btn btn-outline-info"
+                      >
+                        Detalles
+                      </NavLink>
+
+                      <NavLink
+                        to={"/updateDepartamentos/" + dept.numero}
+                        className="btn btn-outline-warning"
+                      >
+                        Editar
+                      </NavLink>
+                      <NavLink
+                        to={
+                          "/deleteDept/" +
+                          dept.numero +
+                          "/" +
+                          dept.nombre +
+                          "/" +
+                          dept.localidad
+                        }
+                        className="btn btn-outline-danger"
+                      >
+                        eliminar
+                      </NavLink>
+                    </td>
                   </tr>
                 );
               })}
