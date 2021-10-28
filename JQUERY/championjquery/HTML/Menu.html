@@ -1,0 +1,80 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light"
+  aria-label="Tenth navbar example"
+>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample08"
+      aria-controls="navbarsExample08"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse justify-content-md-start"
+      id="navbarsExample08"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/e/e9/UEFA_Champions_League_2021-2024_Logo.png"
+        alt="champions"
+        width="75px"
+      />
+      <h1>Champions</h1>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Apuestas</a>
+        </li>
+        <li class="nav-item dropdown">
+          <span
+            class="nav-link dropdown-toggle"
+            id="desplegable"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Equipos</span
+          >
+          <ul
+            id="equipos"
+            class="dropdown-menu"
+            aria-labelledby="desplegable"
+          ></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const urlChampion = "https://apichampions.azurewebsites.net/";
+
+  $(document).ready(function () {
+    $("#MenuContainer").load("./Menu.html");
+
+    //obtener equipos
+    $.ajax({
+      url: urlChampion + "api/Equipos",
+      method: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        $.each(data, function (index, equipo) {
+          let li = $("<li>");
+          let a = $("<span>", {
+            text: equipo.nombre,
+            "data-href": "./Equipo.html?id=" + equipo.idEquipo,
+            class: "dropdown-item equipo",
+          });
+
+          li.append(a);
+          $("#equipos").append(li);
+        });
+      },
+    });
+  });
+</script>

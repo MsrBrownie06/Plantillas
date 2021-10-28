@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equipo</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css" />
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <nav id="MenuContainer"></nav>
+    <main class="container-fluid">
+      <div class="mt-5 row justify-content-center">
+        <div class="card col-8 p-0">
+          <div id="header" class="card-header text-center"></div>
+          <div class="row justify-content-center">
+            <img
+              id="imagenEquipo"
+              src=""
+              alt="nombre"
+              class="card-img py-3"
+              style="width: 300px"
+            />
+          </div>
+          <div class="card-body">
+            <h5 id="titulo" class="card-title text-center"></h5>
+            <p id="texto" class="card-text"></p>
+            <div class="row">
+              <div class="col-6 d-flex justify-content-end">
+                <a href="Jugadores.html" class="btn btn-success"> Jugadores </a>
+              </div>
+              <div class="col-6 d-flex justify-content-start">
+                <a href="Home.html" class="btn btn-primary"> Volver </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      //   const urlChampion = "https://apichampions.azurewebsites.net/";
+
+      //   $(document).ready(function () {
+      //     $("#MenuContainer").load("./Menu.html");
+
+      //     var parametros = new URLSearchParams(window.location.search);
+      //     var id = parametros.get("id");
+
+      //     console.log(id);
+      //     //obtener equipo
+      //     $.ajax({
+      //       url: urlChampion + "api/Equipos/" + id,
+      //       method: "GET",
+      //       dataType: "JSON",
+      //       success: function (data) {
+      //         $("#header").text(data.nombre);
+      //         $("#imagenEquipo").attr("src", data.imagen);
+      //         $("#titulo").text("Champions: " + data.champions);
+      //         $("#texto").text(data.descripcion);
+      //         console.log(data);
+      //       },
+      //     });
+
+      //     //obtener equipos del MENU
+      //     $.ajax({
+      //       url: urlChampion + "api/Equipos",
+      //       method: "GET",
+      //       dataType: "JSON",
+      //       success: function (data) {
+      //         $.each(data, function (index, equipo) {
+      //           let li = $("<li>");
+      //           let a = $("<a>", {
+      //             text: equipo.nombre,
+      //             href: "./Equipo.html?id=" + equipo.idEquipo,
+      //             class: "dropdown-item",
+      //           });
+
+      //           li.append(a);
+      //           $("#equipos").append(li);
+      //         });
+      //       },
+      //     });
+      //   });
+    </script>
+    <script
+      src="../../bootstrap/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
