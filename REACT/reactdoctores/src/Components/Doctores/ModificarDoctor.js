@@ -6,7 +6,7 @@ export default class ModificarDoctor extends Component {
   render() {
     return (
       <div>
-        <h1>Modificar Doctor</h1>
+        <h1>Modificar Doctor 1</h1>
       </div>
     );
   }

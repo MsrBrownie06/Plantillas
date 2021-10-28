@@ -6,7 +6,7 @@ export default class MostrarDoctores extends Component {
   render() {
     return (
       <div>
-        <h1>Mostrar Doctores</h1>
+        <h1>Mostrar Doctores 1</h1>
       </div>
     );
   }

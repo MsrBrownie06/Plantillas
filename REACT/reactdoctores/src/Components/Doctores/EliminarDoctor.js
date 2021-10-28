@@ -6,7 +6,7 @@ export default class EliminarDoctor extends Component {
   render() {
     return (
       <div>
-        <h1>Eliminar Doctor</h1>
+        <h1>Eliminar Doctor 1</h1>
       </div>
     );
   }

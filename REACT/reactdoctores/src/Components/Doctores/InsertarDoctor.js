@@ -6,7 +6,7 @@ export default class InsertarDoctor extends Component {
   render() {
     return (
       <div>
-        <h1>Insertar Doctor</h1>
+        <h1>Insertar Doctor 1 </h1>
       </div>
     );
   }

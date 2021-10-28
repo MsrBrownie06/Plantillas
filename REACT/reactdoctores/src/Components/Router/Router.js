@@ -7,8 +7,8 @@ export default class Router extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route to="/mostrar" component={MostrarDoctores} />
-          <Route to="/insertar" component={InsertarDoctor} />
+          <Route exact path="/mostrar" component={MostrarDoctores} />
+          <Route exact path="/insertar" component={InsertarDoctor} />
         </Switch>
       </BrowserRouter>
     );
