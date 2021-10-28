@@ -1,0 +1,47 @@
+<div>
+    <div class="mt-5 row justify-content-center">
+        <div class="card col-8 p-0">
+            <div id="jugadorHeader" class="card-header text-center">
+
+            </div>
+            <div class="row justify-content-center">
+                <img id="imgJugador" src="" alt="" class="card-img py-3" style="width: 300px;" />
+            </div>
+            <div class="card-body text-center">
+                <h5 id="jugadorTitulo" class="card-title "></h5>
+                <p id="Fecha"></p>
+                <p id="Pais"></p>
+                <span id="JUGADORES" class="btn btn-outline-success">
+                    Jugadores
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        //obtener jugador
+        console.log(datos.urlChampion + "/api/Jugadores/BuscadorJugadores/" + datos.nombreJugador)
+        $.ajax({
+            url: datos.urlChampion + "/api/Jugadores/BuscadorJugadores/" + datos.nombreJugador,
+            method: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                $("#jugadorHeader").text(data[0].nombre);
+                $("#imgJugador").attr({ "src": data[0].imagen, "alt": data[0].nombre });
+                $("#jugadorTitulo").text(data[0].posicion);
+                $("#Fecha").text("Fecha de Nacimiento: " + data[0].fechaNacimiento);
+                $("#Pais").text("Pais: " + data[0].pais);
+                datos.idEquipo = data[0].idEquipo;
+            },
+        });
+
+        $("#JUGADORES").click(function () {
+            $("main").load("./Jugadores.html")
+        })
+    });
+
+</script>

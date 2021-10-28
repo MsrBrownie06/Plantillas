@@ -1,0 +1,55 @@
+<div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-6 text-center">
+            <span id="NEWAPUESTA" class="btn btn-danger">
+                Realizar Apuesta
+            </span>
+        </div>
+    </div>
+    <div class="row text-danger text-center mt-3">
+        <h1>Local: Real Madrid, Visitante: Atlético de Madrid</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 mt-3">
+            <table id="TablaApuestas" class="table table-striped table-hover table-info">
+                <thead class="text-center fw-bold">
+                    <tr>
+                        <td>USUARIO</td>
+                        <td>RESULTADO</td>
+                        <td>FECHA</td>
+                    </tr>
+                </thead>
+                <tbody class="text-center ">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: datos.urlChampion + "api/Apuestas",
+            method: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                $.each(data, function (index, apuesta) {
+                    let tr = $("<tr>");
+                    let tdUser = $("<td>", { text: apuesta.usuario });
+                    let tdRes = $("<td>", { text: apuesta.resultado });
+                    let tdFecha = $("<td>", { text: apuesta.fecha });
+                    tr.append(tdUser).append(tdRes).append(tdFecha);
+                    $("#TablaApuestas").append(tr);
+
+                })
+            }
+        })
+
+        $("#NEWAPUESTA").click(function () {
+            $("main").load("./NewApuesta.html")
+        })
+
+    });
+</script>
