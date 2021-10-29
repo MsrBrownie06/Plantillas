@@ -1,0 +1,109 @@
+<div class="row justify-content-center mt-5">
+  <div
+    class="col-4 rounded-3"
+    style="
+      background-color: lightyellow;
+      border: solid 3px darkorange;
+      color: darkorange;
+    "
+  >
+    <form class="text-center p-4 fw-bold">
+      <div class="mb-3">
+        <h3>MODIFICAR PERSONAJE</h3>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Serie:</label>
+        <select id="ListaSeries" class="form-select"></select>
+        <img id="imgSerie" src="" alt="" width="200px" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Personaje:</label>
+        <select id="listaPersonajes" class="form-select"></select>
+        <img id="imgPersonaje" src="" alt="" width="200px" />
+      </div>
+
+      <button id="modificar" class="btn btn-outline-warning" type="button">
+        Modificar
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    //Series-------------------------------------------------
+    $.ajax({
+      url: datos.urlSeries + "/api/Series",
+      method: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        $.each(data, function (index, serie) {
+          let opcion = $("<option>", {
+            text: serie.nombre,
+            value: serie.idSerie,
+          });
+
+          $("#ListaSeries").append(opcion);
+        });
+      },
+    });
+
+    $("#ListaSeries").change(function () {
+      let serie = $("#ListaSeries").val();
+      $.ajax({
+        url: datos.urlSeries + "/api/Series/" + serie,
+        method: "GET",
+        dataType: "JSON",
+        success: function (data) {
+          $("#imgSerie").attr("src", data.imagen);
+          $("#imgSerie").attr("alt", data.nombre);
+        },
+      });
+    });
+
+    //Personajes-------------------------------------------------
+    $.ajax({
+      url: datos.urlSeries + "/api/Personajes",
+      method: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        $.each(data, function (index, personaje) {
+          let opcion = $("<option>", {
+            text: personaje.nombre,
+            value: personaje.idPersonaje,
+          });
+
+          $("#listaPersonajes").append(opcion);
+        });
+      },
+    });
+
+    $("#listaPersonajes").change(function () {
+      let serie = $("#listaPersonajes").val();
+      $.ajax({
+        url: datos.urlSeries + "/api/Personajes/" + serie,
+        method: "GET",
+        dataType: "JSON",
+        success: function (data) {
+          $("#imgPersonaje").attr("src", data.imagen);
+          $("#imgPersonaje").attr("alt", data.nombre);
+        },
+      });
+    });
+
+    //modificar-------------------------------------------------
+    $("#modificar").click(function () {
+      let serie = $("#ListaSeries").val();
+      let personaje = $("#listaPersonajes").val();
+
+      $.ajax({
+        url: datos.urlSeries + "/api/Personajes/" + personaje + "/" + serie,
+        method: "PUT",
+        success: function () {
+          datos.serie = serie;
+          $("main").load("./Personajes.html");
+        },
+      });
+    });
+  });
+</script>

@@ -1,0 +1,33 @@
+<div class="mt-5 row justify-content-center">
+  <div class="card col-8 p-0">
+    <div class="row justify-content-center">
+      <img id="imgSerie" src="" alt="" class="card-img-top" />
+    </div>
+    <div class="card-body text-center">
+      <h5 id="titulo" class="card-title"></h5>
+      <p id="puntuacion"></p>
+      <p id="anyo"></p>
+      <span id="PERSONAJES" class="btn btn-outline-success"> Personajes </span>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      url: datos.urlSeries + "/api/Series/" + datos.serie,
+      method: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        $("#imgSerie").attr({ src: data.imagen, alt: data.nombre });
+        $("#titulo").text(data.nombre);
+        $("#puntuacion").text("puntuacion: " + data.puntuacion);
+        $("#anyo").text("año: " + data.anyo);
+      },
+    });
+
+    $("#PERSONAJES").click(function () {
+      $("main").load("./Personajes.html");
+    });
+  });
+</script>

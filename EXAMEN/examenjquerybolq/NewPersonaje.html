@@ -1,0 +1,92 @@
+<div class="row d-flex justify-content-center mt-5">
+  <div
+    class="col-4 rounded-3"
+    style="
+      background-color: lightgreen;
+      border: solid 3px darkgreen;
+      color: darkgreen;
+    "
+  >
+    <form class="text-center p-4 fw-bold">
+      <div class="mb-3">
+        <h3>INSERTAR PERSONAJE</h3>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nombre:</label>
+        <input
+        id="nom"
+          class="form-control"
+          type="text"
+          placeholder="introduzca nombre"
+          
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Imagen:</label>
+        <input
+        id="img"
+          class="form-control"
+          type="text"
+          placeholder="introduzca imagen"
+          
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Serie:</label>
+        <select id="ListaSeries" class="form-select" ">
+        </select>
+      </div>
+
+      <button id="insertarPersonaje" class="btn btn-outline-success" type="button">
+        Insertar Personaje
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      url: datos.urlSeries + "/api/Series",
+      method: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        $.each(data, function (index, serie) {
+          let opcion = $("<option>", {
+            text: serie.nombre,
+            value: serie.idSerie,
+          });
+
+          $("#ListaSeries").append(opcion);
+        });
+      },
+    });
+
+    $("#insertarPersonaje").click(function(){
+
+        let nom = $("#nom").val();
+        let img = $("#img").val();
+        let select = $("#ListaSeries").val();
+
+        let Personaje = new Object();
+        Personaje.idPersonaje = 0
+        Personaje.nombre = nom
+        Personaje.imagen = img
+        Personaje.idSerie = parseInt(select);
+
+        let json = JSON.stringify(Personaje);
+
+        $.ajax({
+            url : datos.urlSeries + "/api/Personajes",
+            method : "POST",
+            data : json,
+            contentType : "application/json",
+            success:function(){  
+                datos.serie = select;
+                $("main").load("./Personajes.html");
+            }
+        })
+    })
+
+  });
+</script>

@@ -1,0 +1,52 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-8 text-center">
+    <span id="VOLVER" class="btn btn-danger"> Volver </span>
+    <table
+      id="personajes"
+      class="
+        table table-striped table-hover table-responsive table-bordered
+        border-dark
+      "
+    >
+      <thead
+        class="fw-bold"
+        style="background-color: midnightblue; color: white"
+      >
+        <tr>
+          <td>Personaje</td>
+          <td>Imagen</td>
+        </tr>
+      </thead>
+      <tbody class="table-info table-bordered border-dark"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      url: datos.urlSeries + "/api/Series/PersonajesSerie/" + datos.serie,
+      method: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        $.each(data, function (index, personaje) {
+          let tr = $("<tr>");
+          let tdPer = $("<td>", { text: personaje.nombre });
+          let tdImg = $("<td>");
+          let img = $("<img>", {
+            src: personaje.imagen,
+            alt: personaje.nombre,
+            width: "300px",
+          });
+          tdImg.append(img);
+          tr.append(tdPer).append(tdImg);
+          $("#personajes tbody").append(tr);
+        });
+      },
+    });
+
+    $("#VOLVER").click(function () {
+      $("main").load("./Serie.html");
+    });
+  });
+</script>

@@ -1,0 +1,103 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light"
+  aria-label="Tenth navbar example"
+>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample08"
+      aria-controls="navbarsExample08"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse justify-content-md-start"
+      id="navbarsExample08"
+    >
+      <img
+        src="https://dbdzm869oupei.cloudfront.net/img/sticker/preview/9371.png"
+        alt="menu"
+        width="10%"
+      />
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <span id="HOME" class="nav-link active"> Home </span>
+        </li>
+        <li class="nav-item">
+          <span id="NUEVO" class="nav-link active"> Nuevo Personaje </span>
+        </li>
+        <li class="nav-item">
+          <span id="MODIFICAR" class="nav-link active">
+            Modificar Personaje
+          </span>
+        </li>
+        <li class="nav-item dropdown">
+          <span
+            class="nav-link dropdown-toggle"
+            id="desplegable"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Series
+          </span>
+          <ul
+            id="series"
+            class="dropdown-menu"
+            aria-labelledby="desplegable"
+          ></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const datos = {
+    urlSeries: "https://apiseriespersonajes.azurewebsites.net/",
+    serie: null,
+    personaje: null,
+  };
+
+  $(document).ready(function () {
+    $.ajax({
+      url: datos.urlSeries + "/api/Series",
+      method: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        $.each(data, function (index, serie) {
+          let li = $("<li>");
+          let span = $("<span>", {
+            text: serie.nombre,
+            "data-idSerie": serie.idSerie,
+            class: "dropdown-item",
+          });
+
+          span.click(function () {
+            datos.serie = $(this).data("idserie");
+            $("main").load("./Serie.html");
+          });
+
+          li.append(span);
+          $("#series").append(li);
+        });
+      },
+    });
+
+    $("#HOME").click(function () {
+      $("main").empty();
+    });
+
+    $("#NUEVO").click(function () {
+      $("main").load("./NewPersonaje.html");
+    });
+
+    $("#MODIFICAR").click(function () {
+      $("main").load("./ModificarPersonaje.html");
+    });
+  });
+</script>
