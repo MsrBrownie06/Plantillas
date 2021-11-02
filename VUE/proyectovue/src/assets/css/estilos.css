@@ -1,0 +1,10 @@
+img {
+  width: 200px;
+  height: 200px;
+}
+
+h2 {
+  background-color: darkblue;
+  color: lightblue;
+  font-weight: bold;
+}
