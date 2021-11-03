@@ -13,6 +13,9 @@
             <li>
                 <router-link to="/numeros">Numeros</router-link>
             </li>
+            <li>
+                <router-link to="/comics">Comics</router-link>
+            </li>
         </ul>
     </div>
 </template>
