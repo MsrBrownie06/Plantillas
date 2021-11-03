@@ -1,21 +1,25 @@
 <template>
     <div>
         <h1>Comics Padre</h1>
-        <div>
-            <label>Titulo:  </label>
-            <input id="titulo" type="text">
+        <div class="row justify-content-center">
+            <div class="col-4 border border-3 rounded-3 border-success p-3 fw-bold text-success" style="background-color: lightgreen">
+            <label class="form-label">Titulo:  </label>
+            <input class="form-control" v-model="title" type="text">
             <br/><br/>
-            <label>Imagen:  </label>
-            <input id="imagen" type="text">
+            <label class="form-label">Imagen:  </label>
+            <input class="form-control" v-model="img" type="text">
             <br/><br/>
-            <label>Descripcion:  </label>
-            <input id="descripcion" type="text">
+            <label class="form-label">Descripcion:  </label>
+            <input class="form-control" v-model="desc" type="text">
             <br/><br/>
-            <button @click="nuevoComic()">Nuevo Comic</button>
+            <button class="btn btn-outline-success" @click="nuevoComic()">Nuevo Comic</button>
+            </div>
         </div>
         <hr/>
+        <span class="fw-bold" v-if="ComicFavorito">El Comic Favorito es: {{ComicFavorito}}</span>
+        <hr/>
         <div v-for="(comic,index) in comics" :key="index">
-            <ComicHijo :comic="comic"/>
+            <ComicHijo :comic="comic" :index="index"  v-on:metodoFavorito="favorito" v-on:metodoEliminar="eliminarComic" v-on:metodoModificar="modificarComic"/>
         </div>
     </div>
 </template>
@@ -30,21 +34,29 @@ export default {
     },
     methods:{
         nuevoComic(){
-            let title = document.getElementById("titulo").value
-            let img = document.getElementById("imagen").value
-            let desc = document.getElementById("descripcion").value
-
             let obj = {
-                titulo : title,
-                imagen : img,
-                descripcion : desc
+                titulo : this.title,
+                imagen : this.img,
+                descripcion : this.desc
             };
 
-            console.log(obj)
+           this.comics.push(obj)
+        },favorito(nombre){
+            this.ComicFavorito = nombre
+        },eliminarComic(indice){
+            this.comics.splice(indice, 1)
+        },modificarComic(indice){
+                this.comics[indice].titulo = this.title
+                this.comics[indice].imagen = this.img
+                this.comics[indice].descripcion = this.desc
         }
     },
     data(){
         return{
+            title: "",
+            img: "",
+            desc:"",
+            ComicFavorito: "",
                 comics: [
             {
             titulo: "Spiderman",
