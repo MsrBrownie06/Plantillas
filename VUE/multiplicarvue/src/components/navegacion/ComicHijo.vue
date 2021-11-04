@@ -5,6 +5,11 @@
         <!-- //usaremos V-bind para apuntar a una propiedad, en el caso de la imagen v-bind:src -->
         <img v-bind:src="comic.imagen" v-bind:alt="comic.titulo" width="200px"/>
         <p style="font-weight: bold; color: blue">{{comic.descripcion}}</p>
+        <p :class="{
+            rojo: comic.year <= 2000, 
+            verde: comic.year >2000
+            }" style="font-weight: bold;">
+            {{comic.year}}</p>
         <button @click="comicFavorito()" class="btn btn-outline-success">Comic favorito</button>
         <button @click="modificar()" class="btn btn-outline-warning">Modificar Comic</button>
         <button @click="eliminar()" class="btn btn-outline-danger">Eliminar Comic</button>
@@ -27,3 +32,6 @@ export default {
     }
 }
 </script>
+<style scoped>
+@import './../../assets/css/estilos.css';
+</style>
