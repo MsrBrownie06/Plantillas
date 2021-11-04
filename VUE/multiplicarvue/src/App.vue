@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Menu/>
+    <NumerosAleatorios/>
     <hr/>
     <router-view></router-view>
     <hr/>
@@ -10,10 +11,11 @@
 
 <script>
 import Menu from './components/navegacion/Menu.vue'
+import NumerosAleatorios from './components/navegacion/NumerosAleatorios.vue'
 export default {
   name: 'App',
   components: {
-    Menu
+    Menu,NumerosAleatorios
   }
 }
 </script>

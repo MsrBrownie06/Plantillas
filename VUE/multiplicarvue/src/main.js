@@ -10,6 +10,7 @@ import Deportes from "./components/navegacion/Deportes.vue";
 import Numeros from "./components/navegacion/Numeros.vue";
 import ComicPadre from "./components/navegacion/ComicPadre.vue";
 import NumeroDoble from "./components/navegacion/NumeroDoble.vue";
+import NumeroTriple from "./components/navegacion/NumeroTriple.vue";
 
 Vue.config.productionTip = false;
 
@@ -22,6 +23,7 @@ const routes = [
   { path: "/numeros", component: Numeros },
   { path: "/comics", component: ComicPadre },
   { path: "/numeroDoble/:numero?", component: NumeroDoble },
+  { path: "/numeroTriple/:num?", component: NumeroTriple },
 ];
 
 const router = new VueRouter({
