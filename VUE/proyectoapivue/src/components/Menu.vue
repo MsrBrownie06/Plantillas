@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <router-link to="/servicios" class="nav-link active">Servicios</router-link>
                 </li>
+                <li class="nav-item">
+                    <router-link to="/serviciosOficio" class="nav-link active">Servicios de oficio</router-link>
+                </li>
                 <li class="nav-item dropdown">
                     <span class="nav-link dropdown-toggle" id="desplegable" data-bs-toggle="dropdown"
                         aria-expanded="false">Empleados</span>

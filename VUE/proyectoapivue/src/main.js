@@ -6,6 +6,7 @@ import Coches from "./components/Coches.vue";
 import EmpleadosDetalle from "./components/EmpleadosDetalle.vue";
 import EmpleadosOficio from "./components/EmpleadosOficio.vue";
 import EjemploServicios from "./components/EjemploServicios.vue";
+import EmpleadosServiciosOficios from "./components/EmpleadosServiciosOficios.vue";
 
 Vue.config.productionTip = false;
 
@@ -16,6 +17,7 @@ const routes = [
   { path: "/empleado", component: EmpleadosDetalle },
   { path: "/oficios", component: EmpleadosOficio },
   { path: "/servicios", component: EjemploServicios },
+  { path: "/serviciosOficio", component: EmpleadosServiciosOficios },
 ];
 
 const router = new VueRouter({
