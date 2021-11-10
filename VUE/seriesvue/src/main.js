@@ -1,8 +1,21 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
+import Serie from "./components/Serie.vue";
 
-Vue.config.productionTip = false
+import VueRouter from "vue-router";
+
+Vue.use(VueRouter);
+
+const routes = [{ path: "/series/:id", component: Serie }];
+
+const router = new VueRouter({
+  routes,
+  mode: "history",
+});
+
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  router,
+  render: (h) => h(App),
+}).$mount("#app");
