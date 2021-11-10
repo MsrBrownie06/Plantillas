@@ -25,6 +25,9 @@
                     <router-link to="/servicios" class="nav-link active">Servicios</router-link>
                 </li>
                 <li class="nav-item">
+                    <router-link to="/serviciosDepartamentos" class="nav-link active">Servicios de Departamentos</router-link>
+                </li>
+                <li class="nav-item">
                     <router-link to="/serviciosOficio" class="nav-link active">Servicios de oficio</router-link>
                 </li>
                 <li class="nav-item dropdown">

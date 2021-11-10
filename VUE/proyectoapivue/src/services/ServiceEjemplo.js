@@ -16,10 +16,12 @@ export default class ServiceEjemplo {
     }
   });
 
+  //promesa muy simple que es una variable en sí
   getPromesaSimple = new Promise(function (resolve) {
     resolve();
   });
 
+  //promesa mas compleja que es una funcion en sí
   getEmpleado(idEmpleado) {
     return new Promise(function (resolve) {
       var request = "api/Empleados/" + idEmpleado;
