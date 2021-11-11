@@ -12,7 +12,7 @@
 </ul>
 <hr />
 
-<!-- --------------Usando las clases para cambiar los estilos dependiendo de las condiciones que deba llevar-------------------- -->
+<!-- --------------Usando las clases directamente para cambiar los estilos dependiendo de las condiciones que deba llevar-------------------- -->
 <h2>Estilos con class forma 1</h2>
 <ul>
   <li
@@ -25,7 +25,7 @@
 </ul>
 <hr />
 
-<!-- --------------Usando el ngStyle para cambiar los estilos dependiendo de las condiciones que deba llevar-------------------- -->
+<!-- --------------Usando el ngClass para cambiar los estilos dependiendo de las condiciones que deba llevar-------------------- -->
 <h2>Estilos con class forma 2</h2>
 <ul>
   <li
@@ -56,17 +56,5 @@
     Posicion: {{ i }} , Deporte: {{ sport }}
   </li>
 </ul>
-<table border="1">
-  <thead>
-    <tr>
-      <td style="padding: 5px">Deporte</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let deporte of sports">
-      <td style="padding: 5px">{{ deporte }}</td>
-    </tr>
-  </tbody>
-</table>
 <hr />
 <hr />
