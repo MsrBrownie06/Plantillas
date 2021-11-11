@@ -1,0 +1,16 @@
+<div>
+  <button (click)="ocultarComponente()">Ocultar Componente</button>
+  <hr />
+  <div *ngIf="!ocultar" style="background-color: lightblue">
+    <hooks-angular></hooks-angular>
+  </div>
+  <hr />
+  <hr />
+  <h1>Soy ahora la vista de mi Primer Component</h1>
+  <h1 style="color: purple; background-color: lightcoral">
+    Soy el primer componente angular, pero ahora en VISTA
+  </h1>
+  <h2>{{ titulo }}</h2>
+  <p>{{ descripcion }}</p>
+  <b>{{ anio }}</b>
+</div>

@@ -1,0 +1,11 @@
+.estiloPar {
+  background-color: darkred;
+  color: lightcoral;
+  font-weight: bold;
+}
+
+.estiloImpar {
+  background-color: darkgreen;
+  color: lightgreen;
+  font-weight: bold;
+}
