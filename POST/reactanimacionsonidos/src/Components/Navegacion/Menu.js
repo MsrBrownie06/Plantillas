@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Global from "../../Global";
 import axios from "axios";
+
 import anemoImg from "../../Assets/img/visiones/anemo.png";
 import pyroImg from "../../Assets/img/visiones/pyro.png";
 import cryoImg from "../../Assets/img/visiones/cryo.png";
@@ -67,16 +68,19 @@ export default class Menu extends Component {
               <ul className="navbar-nav">
                 {this.state.elementos.map((obj, index) => {
                   return (
-                    <li key={index} className="nav-item">
+                    <button
+                      key={index}
+                      className="nav-item btn btn-outline-secondary"
+                    >
                       <Link to={"/elemento/" + obj} className="nav-link active">
                         <img
                           src={this.state.imagenes[index]}
                           alt={obj}
                           width="100px"
-                        />{" "}
+                        />
                         {obj}
                       </Link>
-                    </li>
+                    </button>
                   );
                 })}
               </ul>
