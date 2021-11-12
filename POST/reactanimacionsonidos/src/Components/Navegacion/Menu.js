@@ -16,13 +16,13 @@ export default class Menu extends Component {
     elementos: [],
     estilos: [],
     imagenes: [
-      { img: anemoImg, css: "rgb(255,255,15)" },
-      { img: cryoImg, css: "rgb(255,255,15)" },
-      { img: dendroImg, css: "rgb(255,255,15)" },
-      { img: electroImg, css: "rgb(199,192,226)" },
-      { img: geoImg, css: "rgb(255,255,15)" },
-      { img: hydroImg, css: "rgb(255,255,15)" },
-      { img: pyroImg, css: "rgb(255,255,15)" },
+      { img: anemoImg, css: "rgb(186,245,223)" },
+      { img: cryoImg, css: "rgb(190,234,233)" },
+      { img: dendroImg, css: "rgb(191,210,135)" },
+      { img: electroImg, css: "rgb(216,188,239)" },
+      { img: geoImg, css: "rgb(244,223,160)" },
+      { img: hydroImg, css: "rgb(160,232,237)" },
+      { img: pyroImg, css: "rgb(248,193,158)" },
     ],
     estado: false,
   };
@@ -74,7 +74,7 @@ export default class Menu extends Component {
                         backgroundColor: this.state.imagenes[index].css,
                       }}
                       key={index}
-                      className="nav-item btn btn-outline-secondary mx-3"
+                      className="nav-item btn mx-2"
                     >
                       <Link to={"/elemento/" + obj} className="nav-link active">
                         <img
