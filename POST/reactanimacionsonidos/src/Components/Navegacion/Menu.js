@@ -2,10 +2,26 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Global from "../../Global";
 import axios from "axios";
+import anemoImg from "../../Assets/img/visiones/anemo.png";
+import pyroImg from "../../Assets/img/visiones/pyro.png";
+import cryoImg from "../../Assets/img/visiones/cryo.png";
+import hydroImg from "../../Assets/img/visiones/hydro.png";
+import dendroImg from "../../Assets/img/visiones/dendro.png";
+import electroImg from "../../Assets/img/visiones/electro.png";
+import geoImg from "../../Assets/img/visiones/geo.png";
 
 export default class Menu extends Component {
   state = {
     elementos: [],
+    imagenes: [
+      anemoImg,
+      cryoImg,
+      dendroImg,
+      electroImg,
+      geoImg,
+      hydroImg,
+      pyroImg,
+    ],
     estado: false,
   };
 
@@ -53,7 +69,12 @@ export default class Menu extends Component {
                   return (
                     <li key={index} className="nav-item">
                       <Link to={"/elemento/" + obj} className="nav-link active">
-                        Elemento {obj}
+                        <img
+                          src={this.state.imagenes[index]}
+                          alt={obj}
+                          width="100px"
+                        />{" "}
+                        {obj}
                       </Link>
                     </li>
                   );

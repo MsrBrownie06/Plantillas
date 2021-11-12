@@ -11,6 +11,7 @@ import { Deportes } from 'src/Components/deportes/deportes.component';
 import { FormularioBindingModel } from 'src/Components/formularioBindingModel/formularioBindingModel.component';
 import { FormulariosReferencia } from 'src/Components/formulariosreferencia/formulariosreferencia.component';
 import { TablaMultiplicar } from 'src/Components/tablaMultiplicar/tablaMultiplicar.component';
+import { PruebaComponent } from './Components/prueba/prueba.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TablaMultiplicar } from 'src/Components/tablaMultiplicar/tablaMultiplic
     Deportes,
     FormularioBindingModel,
     FormulariosReferencia,
-    TablaMultiplicar
+    TablaMultiplicar,
+    PruebaComponent
   ],
   imports: [
     BrowserModule,

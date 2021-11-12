@@ -6,13 +6,11 @@ import { Component } from "@angular/core";
 })
 
 export class TablaMultiplicar{
-    public numTabla: number;
-    public numOperacion: number;
+    public numTabla!: number;
+    public numOperacion!: number;
     public resultados: Array<number>;
 
     constructor(){
-        this.numTabla = 0;
-        this.numOperacion = 0;
         this.resultados = [];
     }
 

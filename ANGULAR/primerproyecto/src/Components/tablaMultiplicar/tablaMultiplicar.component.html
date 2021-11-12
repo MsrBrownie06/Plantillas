@@ -6,7 +6,7 @@
   <button>Crear Tabla</button>
 </form>
 
-<table border="1">
+<table *ngIf="resultados.length > 0" border="1">
   <thead>
     <tr>
       <td>OPERACIÓN</td>
