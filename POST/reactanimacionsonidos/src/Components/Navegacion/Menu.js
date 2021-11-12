@@ -28,7 +28,7 @@ export default class Menu extends Component {
     if (this.state.estado === true) {
       return (
         <nav
-          className="navbar navbar-expand-lg navbar-dark bg-dark"
+          className="navbar navbar-expand-lg navbar-light bg-light"
           aria-label="Tenth navbar example"
         >
           <div className="container-fluid">
