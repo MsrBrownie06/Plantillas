@@ -12,6 +12,7 @@ import { NumeroDobleComponent } from "./Components/numero-doble/numero-doble.com
 //Ahora defeniremos el array de rutas para la navegacion, el cual es de tipo routes
 
 //en path la barra ya esta implicita, es decir, no hay que ponerla 
+//las rutas deben ir en orden, ya que sino dejara de hacer caso y podria no funcionar
 const appRoutes : Routes = [
     {path: "",component: HomeComponent}, 
     {path:"home", component: HomeComponent}, 
@@ -19,6 +20,7 @@ const appRoutes : Routes = [
     {path:"cine", component:CineComponent},
     {path:"television", component:TelevisionComponent},
     {path:"numeroDoble", component:NumeroDobleComponent},
+    {path:"numeroDoble/:numero", component:NumeroDobleComponent},
     {path:"**", component:Error404Component},
 ];
 

@@ -1,1 +1,18 @@
 <p>Estamos en numero-doble works!</p>
+<h1>Ejemplo rutas parámetros Angular</h1>
+
+<hr />
+<button (click)="redirect(15)">Enviar 15</button>
+<button (click)="redirect(6)">Enviar 6</button>
+<button (click)="redirect(9)">Enviar 9</button>
+<hr />
+
+<div *ngIf="numero">
+  <h1 style="color: purple">
+    El doble de {{ numero }} es:
+    <span style="color: darkslateblue">{{ doble }}</span>
+  </h1>
+</div>
+<div *ngIf="!numero">
+  <h1 style="color: purple">No hemos recibido parametros</h1>
+</div>

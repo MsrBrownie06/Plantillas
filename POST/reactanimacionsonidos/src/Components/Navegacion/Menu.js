@@ -14,14 +14,15 @@ import geoImg from "../../Assets/img/visiones/geo.png";
 export default class Menu extends Component {
   state = {
     elementos: [],
+    estilos: [],
     imagenes: [
-      anemoImg,
-      cryoImg,
-      dendroImg,
-      electroImg,
-      geoImg,
-      hydroImg,
-      pyroImg,
+      { img: anemoImg, css: "rgb(255,255,15)" },
+      { img: cryoImg, css: "rgb(255,255,15)" },
+      { img: dendroImg, css: "rgb(255,255,15)" },
+      { img: electroImg, css: "rgb(199,192,226)" },
+      { img: geoImg, css: "rgb(255,255,15)" },
+      { img: hydroImg, css: "rgb(255,255,15)" },
+      { img: pyroImg, css: "rgb(255,255,15)" },
     ],
     estado: false,
   };
@@ -68,19 +69,21 @@ export default class Menu extends Component {
               <ul className="navbar-nav">
                 {this.state.elementos.map((obj, index) => {
                   return (
-                    <button
+                    <li
+                      style={{
+                        backgroundColor: this.state.imagenes[index].css,
+                      }}
                       key={index}
-                      className="nav-item btn btn-outline-secondary"
+                      className="nav-item btn btn-outline-secondary mx-3"
                     >
                       <Link to={"/elemento/" + obj} className="nav-link active">
                         <img
-                          src={this.state.imagenes[index]}
+                          src={this.state.imagenes[index].img}
                           alt={obj}
                           width="100px"
                         />
-                        {obj}
                       </Link>
-                    </button>
+                    </li>
                   );
                 })}
               </ul>
