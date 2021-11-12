@@ -11,6 +11,8 @@ import { MusicaComponent } from './Components/musica/musica.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { Error404Component } from './Components/error404/error404.component';
 import { NumeroDobleComponent } from './Components/numero-doble/numero-doble.component';
+import { MenuCollatzComponent } from './Components/menu-collatz/menu-collatz.component';
+import { CollatzComponent } from './Components/collatz/collatz.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NumeroDobleComponent } from './Components/numero-doble/numero-doble.com
     MusicaComponent,
     MenuComponent,
     Error404Component,
-    NumeroDobleComponent
+    NumeroDobleComponent,
+    MenuCollatzComponent,
+    CollatzComponent
   ],
   imports: [
     BrowserModule,routing
