@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 //importamos el react Spring
 import { useSpring, config, animated } from 'react-spring';
+
 import { Link } from "react-router-dom";
 import Global from "../../Global";
 import axios from "axios";
@@ -13,19 +14,19 @@ import dendroImg from "../../Assets/img/visiones/dendro.png";
 import electroImg from "../../Assets/img/visiones/electro.png";
 import geoImg from "../../Assets/img/visiones/geo.png";
 
-const MenuAnimado = (props) => {
+function MenuAnimado(props) {
   const { obj, index, imagen } = props;
 
   const [opcion, setOpcion] = useState(false)
 
   const animacion = useSpring({
-    from: { height: opcion ? "130px" : "150px", backgroundColor: imagen.css },
+    from: { height: opcion ? "130px" : "150px", backgroundColor: imagen.backgroundColor },
     to: { height: opcion ? "150px" : "130px" },
     config: { config: config.gentle }
   });
 
   const letras = useSpring({
-    from: { opacity: opcion ? "0" : "1" },
+    from: { opacity: opcion ? "0" : "1", color: imagen.colorText },
     to: { opacity: opcion ? "1" : "0" },
     config: { config: config.default }
   })
@@ -60,15 +61,14 @@ export default class Menu extends Component {
 
   state = {
     elementos: [],
-    estilos: [],
     imagenes: [
-      { img: anemoImg, css: "rgb(186,245,223)" },
-      { img: cryoImg, css: "rgb(190,234,233)" },
-      { img: dendroImg, css: "rgb(191,210,135)" },
-      { img: electroImg, css: "rgb(216,188,239)" },
-      { img: geoImg, css: "rgb(244,223,160)" },
-      { img: hydroImg, css: "rgb(160,232,237)" },
-      { img: pyroImg, css: "rgb(248,193,158)" },
+      { img: anemoImg, backgroundColor: "rgb(186,245,223)", colorText: "rgb(6,144,110)" },
+      { img: cryoImg, backgroundColor: "rgb(190,234,233)", colorText: "rgb(27,154,156)" },
+      { img: dendroImg, backgroundColor: "rgb(191,210,135)", colorText: "rgb(5,150,5)" },
+      { img: electroImg, backgroundColor: "rgb(216,188,239)", colorText: "rgb(93,23,144)" },
+      { img: geoImg, backgroundColor: "rgb(244,223,160)", colorText: "rgb(172,94,22)" },
+      { img: hydroImg, backgroundColor: "rgb(160,232,237)", colorText: "rgb(12,100,140)" },
+      { img: pyroImg, backgroundColor: "rgb(248,193,158)", colorText: "rgb(100,37,5)" },
     ],
     estado: false,
   };
