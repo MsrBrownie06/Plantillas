@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+//importamos el react Spring
+import { useSpring, config, animated } from 'react-spring';
 import { Link } from "react-router-dom";
 import Global from "../../Global";
 import axios from "axios";
@@ -11,7 +13,51 @@ import dendroImg from "../../Assets/img/visiones/dendro.png";
 import electroImg from "../../Assets/img/visiones/electro.png";
 import geoImg from "../../Assets/img/visiones/geo.png";
 
+const MenuAnimado = (props) => {
+  const { obj, index, imagen } = props;
+
+  const [opcion, setOpcion] = useState(false)
+
+  const animacion = useSpring({
+    from: { height: opcion ? "130px" : "150px", backgroundColor: imagen.css },
+    to: { height: opcion ? "150px" : "130px" },
+    config: { config: config.gentle }
+  });
+
+  const letras = useSpring({
+    from: { opacity: opcion ? "0" : "1" },
+    to: { opacity: opcion ? "1" : "0" },
+    config: { config: config.default }
+  })
+
+  return (
+    <animated.li
+      onMouseOver={() => { setOpcion(true) }}
+      onMouseOut={() => { setOpcion(false) }}
+      style={animacion}
+      key={index}
+      className="nav-item btn mx-2"
+    >
+      <Link to={"/elemento/" + obj} className="nav-link active">
+        <img
+          src={imagen.img}
+          alt={obj}
+          width="100px"
+        />
+        <animated.div style={letras} className="row pt-2 text-center">
+          <b>{obj}</b>
+        </animated.div>
+      </Link>
+    </animated.li>
+  )
+}
+
+
+
+
 export default class Menu extends Component {
+
+
   state = {
     elementos: [],
     estilos: [],
@@ -69,21 +115,7 @@ export default class Menu extends Component {
               <ul className="navbar-nav">
                 {this.state.elementos.map((obj, index) => {
                   return (
-                    <li
-                      style={{
-                        backgroundColor: this.state.imagenes[index].css,
-                      }}
-                      key={index}
-                      className="nav-item btn mx-2"
-                    >
-                      <Link to={"/elemento/" + obj} className="nav-link active">
-                        <img
-                          src={this.state.imagenes[index].img}
-                          alt={obj}
-                          width="100px"
-                        />
-                      </Link>
-                    </li>
+                    <MenuAnimado key={index} obj={obj} index={index} imagen={this.state.imagenes[index]} />
                   );
                 })}
               </ul>
