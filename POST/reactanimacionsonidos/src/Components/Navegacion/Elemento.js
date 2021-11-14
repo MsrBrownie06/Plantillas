@@ -137,13 +137,15 @@ export default class Elemento extends Component {
   }
 }
 
+//creamos la funcion Personaje que se encargara de crear las cartas con sus animaciones
 function Personaje(props) {
   const { index, personaje } = props;
 
   const [volteado, setVolteado] = useState(false);
   const [encima, setEncima] = useState(false);
 
-  //cambias directamente los valores de estilos con Spring
+  //En vez de crear una constante, cambiamos directamente los valores CSS con Spring para que sea mas sencillo, 
+  //ademas de usar un config personalizado
   const { transform, opacity, display, border } = useSpring({
     transform: volteado ? "rotateY(0deg)" : "rotateY(360deg)",
     opacity: volteado ? "0" : "1",

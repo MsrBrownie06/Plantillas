@@ -14,17 +14,25 @@ import dendroImg from "../../Assets/img/visiones/dendro.png";
 import electroImg from "../../Assets/img/visiones/electro.png";
 import geoImg from "../../Assets/img/visiones/geo.png";
 
-function MenuAnimado(props) {
+//creamos la funcion OpcionMenu, en donde, ademas de crear los LI de la lista de rutas, añadiremos una animacion con Spring
+function OpcionMenu(props) {
+
+  //al ser una funcion, debemos añadir los props y el estado
   const { obj, index, imagen } = props;
 
   const [opcion, setOpcion] = useState(false)
 
+  //Aqui haremos dos tipos de animaciones:
+
+  //Aqui creamos la animacion que modificara la altura de los LI, ademas de configurarlo mediante la masa, tension y fricción
   const animacion = useSpring({
     from: { height: opcion ? "130px" : "150px", backgroundColor: imagen.backgroundColor },
     to: { height: opcion ? "150px" : "130px" },
-    config: { config: config.gentle }
+    config: { mass: 1, tension: 120, friction: 14 }
   });
 
+  //Aqui creamos la animacion de las letras y usaremos "config" el cual 
+  //nos proporciona configuraciones predeterminadas que se pueden ver en la pagina oficial
   const letras = useSpring({
     from: { opacity: opcion ? "0" : "1", color: imagen.colorText },
     to: { opacity: opcion ? "1" : "0" },
@@ -32,6 +40,8 @@ function MenuAnimado(props) {
   })
 
   return (
+    //se coloca "animated" para decirle a Spring donde habrá una animacion, y colocaremos la animacion en el atributo style 
+    //con solo una llave. Tambien ponemos eventos de Raton para cambiar el estado y asi cambiar la animacion 
     <animated.li
       onMouseOver={() => { setOpcion(true) }}
       onMouseOut={() => { setOpcion(false) }}
@@ -115,7 +125,7 @@ export default class Menu extends Component {
               <ul className="navbar-nav">
                 {this.state.elementos.map((obj, index) => {
                   return (
-                    <MenuAnimado key={index} obj={obj} index={index} imagen={this.state.imagenes[index]} />
+                    <OpcionMenu key={index} obj={obj} index={index} imagen={this.state.imagenes[index]} />
                   );
                 })}
               </ul>
