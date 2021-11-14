@@ -1,4 +1,7 @@
-import React, { Component } from "react";
+import { useSpring, animated } from "react-spring";
+import React, { Component, useState } from "react";
+
+//imagenes de personajes
 import AlbedoImg from '../../Assets/img/personajes/Albedo.png'
 import AloyImg from '../../Assets/img/personajes/Aloy.png'
 import AmberImg from '../../Assets/img/personajes/Amber.png'
@@ -110,11 +113,12 @@ export default class Elemento extends Component {
 
   componentDidUpdate = (prevprops) => {
     if (prevprops.vision !== this.props.vision) {
+      this.setState({
+        estado: false
+      })
       this.seleccionarPersonajes();
     }
   }
-
-
 
   render() {
     if (this.state.estado === true) {
@@ -122,19 +126,7 @@ export default class Elemento extends Component {
         <div className="row row-cols-5 g-2">
           {this.state.seleccionados.map((personaje, index) => {
             return (
-              <div key={index} className="col text-center">
-                <div className="card mb-3 m-2" style={{ maxWidth: "350px" }}>
-
-                  <img src={personaje.imagen} className="img-fluid card-img-top" alt="nombreImagen" />
-                  <div className="card-img-overlay">
-                    <h1 className="card-title">{personaje.nombre}</h1>
-                    <p className="card-text">Arma: <b>{personaje.arma}</b></p>
-                    <p className="card-text">Ciudad: <b>{personaje.ciudad}</b></p>
-                    <p className="card-text"><small className="text-muted">Rareza: {personaje.estrellas} estrellas</small></p>
-                  </div>
-
-                </div>
-              </div>
+              <Personaje key={index} index={index} personaje={personaje} />
             )
           })}
         </div >
@@ -143,4 +135,36 @@ export default class Elemento extends Component {
       return <h1>Cargando Personajes</h1>
     }
   }
+}
+
+function Personaje(props) {
+  const { index, personaje } = props;
+
+  const [volteado, setVolteado] = useState(false);
+  const [encima, setEncima] = useState(false);
+
+  //cambias directamente los valores de estilos con Spring
+  const { transform, opacity, display, border } = useSpring({
+    transform: volteado ? "rotateY(0deg)" : "rotateY(360deg)",
+    opacity: volteado ? "0" : "1",
+    display: volteado ? "block" : "none",
+    border: encima ? "5px solid rgb(212,175,55)" : "0px solid rgb(212,175,55)",
+    config: { mass: 5, tension: 500, friction: 80 }
+  })
+
+  return (
+    <div style={{ maxWidth: "350px" }} key={index} onClick={() => { setVolteado(!volteado); setEncima(false) }} className="col text-center">
+      <animated.div style={{ border }} className="card mb-3 m-2">
+
+        <animated.img onMouseEnter={() => { setEncima(true) }} onMouseOut={() => { setEncima(false) }} src={personaje.imagen} style={{ opacity, transform }} className="img-fluid card-img-top" alt="nombreImagen" />
+        <animated.div style={{ display }} className="card-img-overlay">
+          <h1 className="card-title">{personaje.nombre}</h1>
+          <p className="card-text">Arma: <b>{personaje.arma}</b></p>
+          <p className="card-text">Ciudad: <b>{personaje.ciudad}</b></p>
+          <p className="card-text"><small className="text-muted">Rareza: {personaje.estrellas} estrellas</small></p>
+        </animated.div>
+
+      </animated.div>
+    </div>
+  );
 }
