@@ -4,7 +4,6 @@ import React, { Component } from "react";
 export default class Elemento extends Component {
 
   state = {
-    nombres: ["amber", "ayaka", "baizhu", "barbara", "beidou", "bennett", "childe", "chongyun", "diluc", "diona", "fischl", "ganyu", "jean", "kaeya", "keqing", "klee", "lisa", "mona", "ningguang", "noelle", "qiqi", "razor", "sucrose", "venti", "xiangling", "xiao", "xingqiu", "xinyan", "zhongli"],
     personajes: [],
     estado: false
   }
