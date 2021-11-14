@@ -39,7 +39,7 @@ function MenuAnimado(props) {
       key={index}
       className="nav-item btn mx-2"
     >
-      <Link to={"/elemento/" + obj} className="nav-link active">
+      <Link to={"/elemento/" + obj} className="nav-link">
         <img
           src={imagen.img}
           alt={obj}
