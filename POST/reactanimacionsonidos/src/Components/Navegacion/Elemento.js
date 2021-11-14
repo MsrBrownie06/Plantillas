@@ -148,7 +148,7 @@ function Personaje(props) {
     transform: volteado ? "rotateY(0deg)" : "rotateY(360deg)",
     opacity: volteado ? "0" : "1",
     display: volteado ? "block" : "none",
-    border: encima ? "5px solid rgb(212,175,55)" : "0px solid rgb(212,175,55)",
+    border: encima ? "5px solid rgb(212,175,55)" : "1px solid rgb(212,175,55)",
     config: { mass: 1, tension: 500, friction: 80 }
   })
 
