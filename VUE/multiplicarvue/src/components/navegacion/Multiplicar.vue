@@ -2,16 +2,20 @@
     <div>
         <h1>Tabla de Multiplicar</h1>
         <div>
+            
             <label>Introduzca numero: </label>
-            <input type="text" v-model="numero">
+            <input type="text" v-model="numeroTabla">
             <button v-on:click="mostrarTabla()">Tabla de multiplicar</button>
 
 
             <label>Numero 1</label>
+
             <input type="text" v-model="numero1">
             <label>Numero 2</label>
+
             <input type="text" v-model="numero2">
             <button @click="sumarNumeros()">Sumar numeros</button>
+
             <!-- //v-html es para decir a la etiqueta que recibira un mensaje HTML que debe interpretar -->
             <h1 v-html="mensaje" style="color:blue">{{mensaje}}</h1>
         </div>
@@ -40,9 +44,9 @@ export default {
         },mostrarTabla(){
             this.tabla = "";
             for (let i = 0; i <= 10; i++) {
-                var op = parseInt(this.numero) * i;
+                var op = parseInt(this.numeroTabla) * i;
                 this.tabla += "<tr>";
-                this.tabla += "<td>" +this.numero + " X " + i + "</td>";
+                this.tabla += "<td>" +this.numeroTabla + " X " + i + "</td>";
                 this.tabla += "<td>"+op+"</td>"
                 this.tabla += "</td>";
                 
@@ -55,7 +59,7 @@ export default {
             numero1 : 0,
             numero2 : 0,
             mensaje: "",
-            numero: 0,
+            numeroTabla: 0,
             tabla:""
         }
     }

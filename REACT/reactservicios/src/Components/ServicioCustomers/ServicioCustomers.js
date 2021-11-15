@@ -20,7 +20,7 @@ export default class ServicioCustomers extends Component {
     });
   };
 
-  //solo queremos cargar los clientes al iniciar la pagina
+  //solo queremos cargar los clientes al iniciar la pagina sin haber hecho el render
   componentWillMount = () => {
     this.cargarCustomers();
   };

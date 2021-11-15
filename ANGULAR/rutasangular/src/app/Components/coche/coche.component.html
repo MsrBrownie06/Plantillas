@@ -1,0 +1,19 @@
+<div>
+  <button (click)="seleccionarCocheHijo()">
+    Seleccionar Coche con el Padre
+  </button>
+  <h1 style="color: purple">{{ car.marca }}, {{ car.modelo }}</h1>
+  <h2 [ngClass]="{ verde: car.estado == true, rojo: car.estado == false }">
+    {{ mensaje }}
+  </h2>
+  <hr />
+  <h2>
+    Velocidad maxima: <span style="color: darkred">{{ car.velocidadMax }}</span>
+  </h2>
+  <h2>
+    Velocidad Actual:
+    <span style="color: greenyellow">{{ car.velocidad }}</span>
+  </h2>
+  <button (click)="encenderCoche()">Encender/Apagar</button>
+  <button (click)="acelerarCoche()">Acelerar</button>
+</div>

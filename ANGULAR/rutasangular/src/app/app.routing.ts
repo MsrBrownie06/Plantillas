@@ -9,6 +9,9 @@ import { TelevisionComponent } from "./Components/television/television.componen
 import { Error404Component } from "./Components/error404/error404.component";
 import { NumeroDobleComponent } from "./Components/numero-doble/numero-doble.component";
 import { CollatzComponent } from "./Components/collatz/collatz.component";
+import { ListaProductosComponent } from "./Components/lista-productos/lista-productos.component";
+import { CocheComponent } from "./Components/coche/coche.component";
+import { ConcesionarioComponent } from "./Components/concesionario/concesionario.component";
 
 //Ahora defeniremos el array de rutas para la navegacion, el cual es de tipo routes
 
@@ -19,7 +22,10 @@ const appRoutes : Routes = [
     {path:"home", component: HomeComponent}, 
     {path:"musica", component:MusicaComponent}, 
     {path:"cine", component:CineComponent},
+    {path:"concesionario", component:ConcesionarioComponent},
+    {path:"coche", component:CocheComponent},
     {path:"television", component:TelevisionComponent},
+    {path:"listaProductos", component:ListaProductosComponent},
     {path:"collatz/:numero", component:CollatzComponent},
     {path:"numeroDoble", component:NumeroDobleComponent},
     {path:"numeroDoble/:numero", component:NumeroDobleComponent},

@@ -34,18 +34,23 @@
 import ServiceDepartamentos from './../../services/ServiceDepartamentos';
 
 const service = new ServiceDepartamentos();
+
 export default {
     name: "DepartamentosIndex",
     mounted(){
         this.cargarDepartamentos();
-    },methods:{
+    },
+    
+    methods:{
         cargarDepartamentos(){
             service.getDept().then(result=>{
                 this.departamentos = result
                 console.log(this.departamentos)
             })
         }
-    },data(){
+    }
+    
+    ,data(){
         return{
             departamentos: [],
         }

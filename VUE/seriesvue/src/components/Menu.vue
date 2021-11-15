@@ -25,9 +25,14 @@
                     <li class="nav-item dropdown">
                         <span class="nav-link dropdown-toggle" id="desplegable" data-bs-toggle="dropdown"
                             aria-expanded="false">Series</span>
+
                         <ul class="dropdown-menu" aria-labelledby="desplegable">
-                            <li v-for="(serie,index) in series" :key="index"><router-link :to="'/series/'+serie.idSerie" class="dropdown-item">{{serie.nombre}}</router-link></li>
+                            <li v-for="(serie,index) in series" :key="index">
+                                <router-link :to="'/series/'+serie.idSerie" class="dropdown-item">{{serie.nombre}}</router-link>
+                            </li>
                         </ul>
+
+                        
                     </li>
                 </ul>
             </div>

@@ -3,22 +3,28 @@
         <h1>Comics Padre</h1>
         <div class="row justify-content-center">
             <div class="col-4 border border-3 rounded-3 border-success p-3 fw-bold text-success" style="background-color: lightgreen">
+
                 <!-- //para hacer un formulario que no me recargue la pagina completa pondremos despues del @submit '.prevent' -->
                 <form @submit.prevent="nuevoComic()"> 
-            <label class="form-label">Titulo:  </label>
-            <input class="form-control" v-model="title" type="text">
-            <br/><br/>
-            <label class="form-label">Imagen:  </label>
-            <input class="form-control" v-model="img" type="text">
-            <br/><br/>
-            <label class="form-label">Descripcion:  </label>
-            <input class="form-control" v-model="desc" type="text">
-            <br/><br/>
-            <label class="form-label">Año:  </label>
-            <input class="form-control" v-model="anio" type="text">
-            <br/><br/>
-            <button class="btn btn-outline-success" @click="nuevoComic()">Nuevo Comic</button>
+                    <label class="form-label">Titulo:  </label>
+                    <input class="form-control" v-model="title" type="text">
+                    <br/><br/>
+
+                    <label class="form-label">Imagen:  </label>
+                    <input class="form-control" v-model="img" type="text">
+                    <br/><br/>
+
+                    <label class="form-label">Descripcion:  </label>
+                    <input class="form-control" v-model="desc" type="text">
+                    <br/><br/>
+
+                    <label class="form-label">Año:  </label>
+                    <input class="form-control" v-model="anio" type="text">
+                    <br/><br/>
+
+                    <button class="btn btn-outline-success" @click="nuevoComic()">Nuevo Comic</button>
                 </form>
+
             </div>
         </div>
         <hr/>
@@ -65,6 +71,7 @@ export default {
             img: "",
             desc: "",
             anio: 0,
+            
             ComicFavorito: "",
                 comics: [
             {

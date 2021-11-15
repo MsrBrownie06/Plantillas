@@ -1,0 +1,11 @@
+<div>Consecionario de Coches</div>
+<div style="color: lightblue; background-color: darkblue">{{ mensaje }}</div>
+<hr />
+<div *ngFor="let coche of coches">
+  <!-- //Vamos a crear los coches que tenemos en el array de Coches -->
+  <app-coche
+    [car]="coche"
+    (seleccionarCoche)="seleccionarCochePadre($event)"
+  ></app-coche>
+  <br />
+</div>
