@@ -4,43 +4,23 @@
 <!-- Debemos dar al form un id de angular, he indicar tambien que es de tipo ngForm de ANGULAR -->
 <form #userForm="ngForm" (ngSubmit)="recibirFormulario()">
   <label>Nombre:</label>
-  <input
-    type="text"
-    name="cajaNombre"
-    #cajaNombre="ngModel"
-    [(ngModel)]="user.nombre"
-    required
-  />
+  <input type="text" name="cajaNombre" #cajaNombre="ngModel" [(ngModel)]="user.nombre" required />
   <!-- Lo verifica mediante el id de ANGULAR que es el "#cajaNombre" -->
   <label style="color: red" *ngIf="!cajaNombre.valid && cajaNombre.touched">
-    El nombre es obligatorio</label
-  >
+    El nombre es obligatorio</label>
   <br /><br />
 
   <label>Apellido:</label>
-  <input
-    type="text"
-    name="cajaApellidos"
-    pattern="[A-Z]{1}[a-z]{2}"
-    #cajaApellidos="ngModel"
-    [(ngModel)]="user.apellidos"
-  />
+  <input type="text" name="cajaApellidos" pattern="[A-Z]{1}[a-z]{2}" #cajaApellidos="ngModel"
+    [(ngModel)]="user.apellidos" />
   <!-- Lo verifica mediante el id de ANGULAR que es el "#cajaApellidos" -->
-  <label
-    *ngIf="!cajaApellidos.valid && cajaApellidos.touched"
-    style="color: red"
-    >El campo apellido debe contener una Mayúscula y dos letras por lo
-    menos..</label
-  >
+  <label *ngIf="!cajaApellidos.valid && cajaApellidos.touched" style="color: red">El campo apellido debe contener una
+    Mayúscula y dos letras por lo
+    menos..</label>
   <br /><br />
 
   <label>Edad:</label>
-  <input
-    type="text"
-    name="cajaEdad"
-    #cajaEdad="ngModel"
-    [(ngModel)]="user.edad"
-  />
+  <input type="text" name="cajaEdad" #cajaEdad="ngModel" [(ngModel)]="user.edad" />
   <br /><br />
 
   <button [disabled]="!userForm.valid">Enviar Datos</button>

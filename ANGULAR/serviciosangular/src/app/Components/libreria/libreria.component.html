@@ -1,44 +1,32 @@
 <h1 class="text-center">Libreria de Comics</h1>
 <div class="row justify-content-center mt-5">
-  <div
-    class="col-4 rounded-3"
-    style="
+  <div class="col-4 rounded-3" style="
       background-color: lightgreen;
       border: solid 3px darkgreen;
       color: darkgreen;
-    "
-  >
-    <!-- //terminar de crear el form con binding -- borrar una vez terminado -->
-    <form class="text-center p-4 fw-bold">
+    ">
+    <!-- //colocamos la directiva ngForm para que pueda usar los datos del formulario -->
+    <form #comicForm="ngForm" (ngSubmit)="insertarComic()" class="text-center p-4 fw-bold">
       <div class="mb-3">
         <h3>INSERTAR</h3>
       </div>
       <div class="mb-3">
         <label class="form-label">Nombre:</label>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="escriba el nombre"
-        />
+        <input class="form-control" type="text" placeholder="escriba el nombre" name="name" #nameInput
+          [(ngModel)]="comic.nombre" />
       </div>
       <div class="mb-3">
         <label class="form-label">Imagen:</label>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="escriba la url de la imagen"
-        />
+        <input class="form-control" type="text" placeholder="escriba la url de la imagen" name="image" #imageInput
+          [(ngModel)]="comic.imagen" />
       </div>
       <div class="mb-3">
         <label class="form-label">Descripcion:</label>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="escriba la descripcion"
-        />
+        <input class="form-control" type="text" placeholder="escriba la descripcion" name="description"
+          #descriptionInput [(ngModel)]="comic.descripcion" />
       </div>
 
-      <button class="btn btn-outline-success" type="button">Insertar</button>
+      <button class="btn btn-outline-success" type="submit">Insertar</button>
     </form>
   </div>
 </div>
@@ -50,6 +38,7 @@
 <hr />
 <div class="row row-cols-4 g-2">
   <div *ngFor="let comic of comics">
-    <app-comic [comic]="comic" (favorito)="comicFavorito($event)"></app-comic>
+    <app-comic [comic]="comic" (favorito)="comicFavorito($event)" (modificar)="modificarComic($event)"
+      (eliminar)="eliminarComic($event)"></app-comic>
   </div>
 </div>

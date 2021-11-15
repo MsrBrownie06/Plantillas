@@ -11,7 +11,14 @@ export class LibreriaComponent implements OnInit {
   public comics: Array<Comic>
   public mensaje!: string;
 
+  public comic: Comic;
+
   constructor() { 
+    this.comic = {
+      nombre : "",
+      imagen : "",
+      descripcion:""
+    };
     this.comics = [
       new Comic(
         "Spiderman",
@@ -45,7 +52,26 @@ export class LibreriaComponent implements OnInit {
     this.mensaje = "El comic Favorito ha sido: "+ event.nombre
   }
 
-  
+  insertarComic(){
+    let newComic = {
+      nombre : this.comic.nombre,
+      imagen : this.comic.imagen,
+      descripcion: this.comic.descripcion
+    }
+
+    this.comics.push(newComic)
+  }
+
+  modificarComic(event: any){
+    event.nombre = this.comic.nombre
+    event.imagen = this.comic.imagen
+    event.descripcion = this.comic.descripcion
+  }
+
+  eliminarComic(event: any){
+    let indexComic = this.comics.indexOf(event)
+    this.comics.splice(indexComic,1)
+  }
 
   ngOnInit(): void {
   }
