@@ -18,7 +18,9 @@ export default {
         deleteDepartamento(){
             service.deleteDept(this.id).then(res=>{
                 console.log(res)
+
                 this.$router.push("/serviciosDepartamentos");
+                
             })
         },
     },mounted(){

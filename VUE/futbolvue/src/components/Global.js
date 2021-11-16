@@ -1,5 +1,4 @@
 var Global = {
-
     urlFutbol: "https://apichampions.azurewebsites.net"
 }
 
