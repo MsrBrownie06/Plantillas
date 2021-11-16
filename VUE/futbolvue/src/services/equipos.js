@@ -53,4 +53,14 @@ export default class Equipos {
         })
     }
 
+    postApuesta(objeto) {
+        return new Promise(function (resolve) {
+            let request = "/api/Apuestas";
+            let url = Global.urlFutbol + request;
+            axios.post(url, objeto).then(res => {
+                resolve(res)
+            })
+        })
+    }
+
 }

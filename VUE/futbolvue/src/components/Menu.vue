@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link class="nav-link active" to="/new">Apuestas</router-link>
+                    <router-link class="nav-link active" to="/apuestas">Apuestas</router-link>
                 </li>
                 <li class="nav-item dropdown">
                     <span class="nav-link dropdown-toggle" id="desplegable" data-bs-toggle="dropdown"

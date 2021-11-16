@@ -1,29 +1,22 @@
 <h1 class="text-center">Empleados mediante el oficio</h1>
 
 <div class="row justify-content-center mt-5">
-  <div
-    class="col-4 rounded-3"
-    style="
+  <div class="col-4 rounded-3" style="
       background-color: lightgreen;
       border: solid 3px darkgreen;
       color: darkgreen;
-    "
-  >
+    ">
     <form #formOficios="ngForm" class="text-center p-4 fw-bold">
       <div class="mb-3">
         <h3>Buscar Empleado con el Oficio</h3>
       </div>
       <div class="mb-3">
         <label class="form-label">Oficio:</label>
-        <select
-          (change)="getEmpleados()"
-          class="form-control"
-          name="oficio"
-          #oficioSelect
-          [(ngModel)]="oficio"
-        >
-          <option *ngFor="let oficio of oficios">{{ oficio }}</option>
+
+        <select (change)="getEmpleados()" class="form-control" name="oficio" #oficioSelect [(ngModel)]="oficio">
+          <option *ngFor="let oficio of oficios" value="{{oficio}}">{{ oficio }}</option>
         </select>
+
       </div>
     </form>
   </div>
@@ -31,16 +24,11 @@
 
 <div class="row justify-content-center mt-5">
   <div class="col-8 text-center">
-    <table
-      class="
+    <table class="
         table table-striped table-hover table-responsive table-bordered
         border-dark
-      "
-    >
-      <thead
-        class="fw-bold"
-        style="background-color: midnightblue; color: white"
-      >
+      ">
+      <thead class="fw-bold" style="background-color: midnightblue; color: white">
         <tr>
           <td>Id</td>
           <td>Apellido</td>
