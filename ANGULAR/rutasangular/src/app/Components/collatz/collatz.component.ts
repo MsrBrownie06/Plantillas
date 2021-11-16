@@ -16,18 +16,19 @@ export class CollatzComponent implements OnInit {
     this.numeroCollatz = 0;
     this.numero = 0;
     this.resultados = [];
-
    }
 
   ngOnInit(): void {
-
     this._activeRoute.params.subscribe((params: Params)=>{
+
       if(params['numero'] != null){
+
         //asignamos la propiedad para la pagina, siempre vendran como string
-        this.resultados = [];
         this.numeroCollatz = parseInt(params['numero']);
         this.numero = parseInt(params['numero']);
         
+        this.resultados = [];
+
         while(this.numero != 1){
           if(this.numero%2==0){
             this.numero = this.numero/2

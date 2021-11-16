@@ -5,7 +5,7 @@ import { Component, OnInit, DoCheck, OnDestroy } from "@angular/core";
     templateUrl: "./hooksangular.component.html",
 })
 
-export class HooksAngular implements OnInit{
+export class HooksAngular implements OnInit,DoCheck,OnDestroy{
     public mensaje: string;
 
     constructor(){
@@ -17,11 +17,11 @@ export class HooksAngular implements OnInit{
         console.log("ngOnInit(): Ejecuto despues del constructor")
     }
 
-    ngDoCheck(){
+    ngDoCheck(): void{
         console.log("ngDoCheck(): La vista ha cambiado")
     }
 
-    ngOnDestroy(){
+    ngOnDestroy(): void{
         console.log("ngOnDestroy(): Componente destruido")
     }
 
