@@ -1,0 +1,28 @@
+<div class="row row-cols-4 g-2">
+  <div *ngFor="let comic of comics">
+    <div class="col">
+      <div class="card mb-3 m-2" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img
+              src="{{ comic.imagen }}"
+              class="img-fluid rounded-start"
+              alt="{{ comic.nombre }}"
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <h5 class="card-title">{{ comic.nombre }}</h5>
+              <p class="card-text">{{ comic.descripcion }}</p>
+              <button class="btn btn-outline-success">Favorito</button>
+              <br /><br />
+              <button class="btn btn-outline-warning">Modificar</button>
+              <br /><br />
+              <button class="btn btn-outline-danger">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

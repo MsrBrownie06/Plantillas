@@ -7,25 +7,41 @@ import { routing, appRoutingProviders } from './app.routing';
 //importamos FormModules para poder usar los formularios
 import { FormsModule } from '@angular/forms';
 
+//importamos HttpClientModule para poder usar Apis en el proyecto
+import {HttpClientModule} from '@angular/common/http'
+
 import { AppComponent } from './app.component';
 import { LibreriaComponent } from './Components/libreria/libreria.component';
 import { ComicComponent } from './Components/comic/comic.component';
 import { MenuComponent } from './Components/menu/menu.component';
+import { ComicsinyeccionComponent } from './Components/comicsinyeccion/comicsinyeccion.component';
+import { ComicsService } from './Services/comics.service';
+import { PersonasApiComponent } from './Components/personas-api/personas-api.component';
+import { PersonasService } from './Services/personas.service';
+import { EmpleadosService } from './Services/empleados.service';
+import { EmpleadosSalarioComponent } from './Components/empleados-salario/empleados-salario.component';
+import { EmpleadosOficioComponent } from './Components/empleados-oficio/empleados-oficio.component';
+import { EmpleadoOficioService } from './Services/empleadoOficio.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LibreriaComponent,
     ComicComponent,
-    MenuComponent
+    MenuComponent,
+    ComicsinyeccionComponent,
+    PersonasApiComponent,
+    EmpleadosSalarioComponent,
+    EmpleadosOficioComponent
   ],
   //colocamos el 'routing' en IMPORTS
   //colocamos el 'FormModule' en IMPORTS
   imports: [
-    BrowserModule, routing, FormsModule
+    BrowserModule, routing, FormsModule, HttpClientModule
   ],
   //colocamos el 'appRoutingProviders' en PROVIDERS
-  providers: [appRoutingProviders],
+  //aqui colocaremos tambien los servicios que hayamos creado para usarlos en cualquier componente
+  providers: [appRoutingProviders, ComicsService, PersonasService, EmpleadosService, EmpleadoOficioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,61 @@
+<h1 class="text-center">Buscador de Empleados con el Salario</h1>
+
+<div class="row justify-content-center mt-5">
+  <div
+    class="col-4 rounded-3"
+    style="
+      background-color: lightgreen;
+      border: solid 3px darkgreen;
+      color: darkgreen;
+    "
+  >
+    <form #formEmpleado="ngForm" class="text-center p-4 fw-bold">
+      <div class="mb-3">
+        <h3>Buscar Empleado por Salario</h3>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Salario:</label>
+        <input
+          class="form-control"
+          type="number"
+          placeholder="introduzca el salario"
+          name="salary"
+          #salarioInput
+          [(ngModel)]="salario"
+        />
+      </div>
+
+      <button
+        (click)="mostrarEmpleados()"
+        class="btn btn-outline-success"
+        type="button"
+      >
+        Insertar
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+  <div class="col-8 text-center">
+    <table
+      class="
+        table table-striped table-hover table-responsive table-bordered
+        border-dark
+      "
+    >
+      <thead class="fw-bold" style="background-color: purple; color: white">
+        <tr>
+          <td>Apellido</td>
+          <td>Salario</td>
+        </tr>
+      </thead>
+      <tbody class="table-info table-bordered border-dark">
+        <tr *ngFor="let empleado of empleados">
+          <td>{{ empleado.apellido }}</td>
+          <td>{{ empleado.salario }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

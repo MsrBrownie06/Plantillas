@@ -87,21 +87,19 @@ class Comics extends Component {
 
     var newComics = [];
     this.state.comics.map((objComic, index) => {
-
       if (indexHijo === index) {
-        objComic.titulo = tituloNew
-        objComic.imagen = imagenNew
-        objComic.descripcion = descripcionNew
-        newComics[index] = objComic
+        objComic.titulo = tituloNew;
+        objComic.imagen = imagenNew;
+        objComic.descripcion = descripcionNew;
+        newComics[index] = objComic;
       } else {
-        newComics[index] = objComic
+        newComics[index] = objComic;
       }
-
     });
 
     this.setState({
-      comics: newComics
-    })
+      comics: newComics,
+    });
   };
 
   render() {
@@ -147,8 +145,8 @@ class Comics extends Component {
             <Comic
               Comic={objComic}
               key={index}
-              selecionarFav={this.selectFavorito}
               index={index}
+              selecionarFav={this.selectFavorito}
               eliminarComic={this.eliminarComic}
               modificarComic={this.modificarComic}
             />
