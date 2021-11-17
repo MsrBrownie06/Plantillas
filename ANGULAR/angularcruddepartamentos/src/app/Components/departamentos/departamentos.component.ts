@@ -12,7 +12,6 @@ import { Departamento } from 'src/app/Models/Departamento';
 export class DepartamentosComponent implements OnInit {
 
   public departamentos!: Array<Departamento>
-  public id!: string
 
   constructor(private _service: DepartamentoService, private _param: ActivatedRoute, private _router:Router) { }
 
@@ -28,9 +27,9 @@ export class DepartamentosComponent implements OnInit {
     })
   }
   //Forma 2
-  eliminarDepartamento(){
-    this._service.deleteDepartamento(this.id).subscribe(res=>{
-      
+  eliminarDepartamento(idDept: number){
+    this._service.deleteDepartamento(idDept.toString()).subscribe(res=>{
+      this.cargarDepartamentos();
     })
   }
 
