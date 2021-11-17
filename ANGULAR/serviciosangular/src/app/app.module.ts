@@ -7,6 +7,7 @@ import { routing, appRoutingProviders } from './app.routing';
 //importamos FormModules para poder usar los formularios
 import { FormsModule } from '@angular/forms';
 
+
 //importamos HttpClientModule para poder usar Apis en el proyecto
 import {HttpClientModule} from '@angular/common/http'
 
@@ -40,8 +41,11 @@ import { DetallesEmpleadoComponent } from './Components/detalles-empleado/detall
   ],
   //colocamos el 'routing' en IMPORTS
   //colocamos el 'FormModule' en IMPORTS
+  //colocamos el 'HttpClientModule' en IMPORTS
   imports: [
-    BrowserModule, routing, FormsModule, HttpClientModule
+    HttpClientModule,
+
+    BrowserModule, routing, FormsModule
   ],
   //colocamos el 'appRoutingProviders' en PROVIDERS
   //aqui colocaremos tambien los servicios que hayamos creado para usarlos en cualquier componente
