@@ -8,14 +8,12 @@
         border-dark
       "
     >
-      <thead
-        class="fw-bold"
-        style="background-color: midnightblue; color: white"
-      >
+      <thead class="fw-bold" style="background-color: purple; color: white">
         <tr>
           <td>numero</td>
           <td>nombre</td>
           <td>localidad</td>
+          <td>Accion</td>
         </tr>
       </thead>
       <tbody class="table-info table-bordered border-dark">
@@ -23,6 +21,23 @@
           <td>{{ dept.numero }}</td>
           <td>{{ dept.nombre }}</td>
           <td>{{ dept.localidad }}</td>
+          <td>
+            <a
+              [routerLink]="[
+                '/modificar',
+                dept.numero,
+                dept.nombre,
+                dept.localidad
+              ]"
+              class="btn btn-outline-warning"
+              >Modificar</a
+            >
+            <a
+              [routerLink]="['/eliminar', dept.numero]"
+              class="btn btn-outline-danger"
+              >Eliminar</a
+            >
+          </td>
         </tr>
       </tbody>
     </table>

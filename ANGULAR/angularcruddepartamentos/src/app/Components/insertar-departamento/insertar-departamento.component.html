@@ -1,0 +1,59 @@
+<div class="row justify-content-center mt-5">
+  <div
+    class="col-4 rounded-3"
+    style="
+      background-color: lightgreen;
+      border: solid 3px darkgreen;
+      color: darkgreen;
+    "
+  >
+    <form #formDepartamento="ngForm" class="text-center p-4 fw-bold">
+      <div class="mb-3">
+        <h3>INSERTAR DEPARTAMENTO</h3>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Número:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="introduzca el numero"
+          name="number"
+          #numeroCaja
+          [(ngModel)]="numero"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Nombre:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="introduzca el nombre"
+          name="name"
+          #nombreCaja
+          [(ngModel)]="nombre"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Localidad:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="introduzca la localidad"
+          name="localidad"
+          #localidadCaja
+          [(ngModel)]="localidad"
+        />
+      </div>
+
+      <button
+        (click)="insertarDepartamento()"
+        class="btn btn-outline-success"
+        type="button"
+      >
+        Insertar
+      </button>
+    </form>
+  </div>
+</div>

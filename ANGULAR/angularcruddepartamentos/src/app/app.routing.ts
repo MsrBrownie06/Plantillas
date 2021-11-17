@@ -5,11 +5,16 @@ import { ModuleWithProviders } from "@angular/core";
 //cargaremos los componentes a usar en las rutas
 import { HomeComponent } from "./Components/home/home.component";
 import { DepartamentosComponent } from "./Components/departamentos/departamentos.component";
+import { InsertarDepartamentoComponent } from "./Components/insertar-departamento/insertar-departamento.component";
+import { ModificarDepartamentoComponent } from "./Components/modificar-departamento/modificar-departamento.component";
 
 //constante con las rutas
 const appRoutes: Routes = [
  {path:"", component: HomeComponent},
- {path:"departamento", component: DepartamentosComponent}
+ {path:"departamento", component: DepartamentosComponent},
+ {path:"eliminar/:idDept", component: DepartamentosComponent},
+ {path:"insertar", component: InsertarDepartamentoComponent},
+ {path:"modificar/:numero/:nombre/:localidad", component: ModificarDepartamentoComponent},
 ];
 
 //exportaremos dos elementos el cual sera:

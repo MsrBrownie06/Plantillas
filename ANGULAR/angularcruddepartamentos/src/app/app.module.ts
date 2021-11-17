@@ -13,13 +13,17 @@ import { MenuComponent } from './Components/menu/menu.component';
 import { DepartamentosComponent } from './Components/departamentos/departamentos.component';
 import { DepartamentoService } from './Services/departamentos.service';
 import { HomeComponent } from './Components/home/home.component';
+import { InsertarDepartamentoComponent } from './Components/insertar-departamento/insertar-departamento.component';
+import { ModificarDepartamentoComponent } from './Components/modificar-departamento/modificar-departamento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     DepartamentosComponent,
-    HomeComponent
+    HomeComponent,
+    InsertarDepartamentoComponent,
+    ModificarDepartamentoComponent
   ],
   imports: [
     BrowserModule,routing,FormsModule,HttpClientModule
