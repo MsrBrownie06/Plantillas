@@ -26,7 +26,9 @@
                 dept.nombre,
                 dept.localidad
               ]" class="btn btn-outline-warning">Modificar</a>
+
             <a [routerLink]="['/eliminar', dept.numero]" class="btn btn-outline-danger">Eliminar RUTA</a>
+
             <button (click)="eliminarDepartamento(dept.numero)" class="btn btn-outline-danger">
               Eliminar BTN
             </button>

@@ -17,7 +17,7 @@ export class DepartamentosComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarDepartamentos()
-    //Forma 1
+    //Forma 1 URL/RUTA
     this._param.params.subscribe((params: Params)=>{
       if(params["idDept"] != null){
         this._service.deleteDepartamento(params["idDept"]).subscribe(res=>{
@@ -26,7 +26,7 @@ export class DepartamentosComponent implements OnInit {
       }
     })
   }
-  //Forma 2
+  //Forma 2 BOTON
   eliminarDepartamento(idDept: number){
     this._service.deleteDepartamento(idDept.toString()).subscribe(res=>{
       this.cargarDepartamentos();

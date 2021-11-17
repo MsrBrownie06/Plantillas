@@ -1,0 +1,28 @@
+<div class="row justify-content-center mt-5">
+    <div class="col-4 rounded-3" style="background-color: lightgreen; border: solid 3px darkgreen; color: darkgreen;">
+        <form #formInsertar="ngForm" (ngSubmit)="insertar()" class="text-center p-4 fw-bold">
+            <div class="mb-3">
+                <h3>INSERTAR PERSONAJE</h3>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">nombre:</label>
+                <input class="form-control" type="text" placeholder="poner el nombre" name="nombre" #nombreCaja
+                    [(ngModel)]="nombre" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">imagen:</label>
+                <input class="form-control" type="text" placeholder="poner la imagen" name="imagen" #imagenCaja
+                    [(ngModel)]="imagen" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Series:</label>
+                <select class="form-control" name="select" #selectOption [(ngModel)]="optionSerie">
+                    <option *ngFor="let serieOpt of series" value="{{serieOpt.idSerie}}">{{serieOpt.nombre}}</option>
+                </select>
+            </div>
+
+            <button class="btn btn-outline-success" type="submit">Insertar</button>
+
+        </form>
+    </div>
+</div>

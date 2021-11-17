@@ -1,0 +1,28 @@
+<div class="row justify-content-center mt-5">
+    <div class="col-4 rounded-3"
+        style="background-color: lightyellow; border: solid 3px darkorange; color: darkorange;">
+        <form #modificarForm="ngForm" class="text-center p-4 fw-bold">
+
+            <div class="mb-3">
+                <h3>MODIFICAR PERSONAJE</h3>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Personajes:</label>
+                <select class="form-control">
+                    <option *ngFor="let personaje of personajes">{{personaje.nombre}}</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Series:</label>
+                <select class="form-control">
+                    <option *ngFor="let serie of series">{{serie.nombre}}</option>
+                </select>
+            </div>
+
+            <button class="btn btn-outline-warning" type="submit">Modificar</button>
+
+        </form>
+    </div>
+</div>
