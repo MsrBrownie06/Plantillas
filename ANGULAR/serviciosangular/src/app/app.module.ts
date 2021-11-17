@@ -22,6 +22,8 @@ import { EmpleadosService } from './Services/empleados.service';
 import { EmpleadosSalarioComponent } from './Components/empleados-salario/empleados-salario.component';
 import { EmpleadosOficioComponent } from './Components/empleados-oficio/empleados-oficio.component';
 import { EmpleadoOficioService } from './Services/empleadoOficio.service';
+import { ListadoEmpleadosComponent } from './Components/listado-empleados/listado-empleados.component';
+import { DetallesEmpleadoComponent } from './Components/detalles-empleado/detalles-empleado.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { EmpleadoOficioService } from './Services/empleadoOficio.service';
     ComicsinyeccionComponent,
     PersonasApiComponent,
     EmpleadosSalarioComponent,
-    EmpleadosOficioComponent
+    EmpleadosOficioComponent,
+    ListadoEmpleadosComponent,
+    DetallesEmpleadoComponent
   ],
   //colocamos el 'routing' en IMPORTS
   //colocamos el 'FormModule' en IMPORTS

@@ -8,6 +8,8 @@ import { ComicsinyeccionComponent } from "./Components/comicsinyeccion/comicsiny
 import { PersonasApiComponent } from "./Components/personas-api/personas-api.component";
 import { EmpleadosSalarioComponent } from "./Components/empleados-salario/empleados-salario.component";
 import { EmpleadosOficioComponent } from "./Components/empleados-oficio/empleados-oficio.component";
+import { ListadoEmpleadosComponent } from "./Components/listado-empleados/listado-empleados.component";
+import { DetallesEmpleadoComponent } from "./Components/detalles-empleado/detalles-empleado.component";
 
 //constante con las rutas
 const appRoutes: Routes = [
@@ -16,6 +18,8 @@ const appRoutes: Routes = [
     {path: "personasApi", component: PersonasApiComponent},
     {path: "empleadosSalario", component: EmpleadosSalarioComponent},
     {path: "empleadosOficio", component: EmpleadosOficioComponent},
+    {path: "listadoEmpleados", component: ListadoEmpleadosComponent},
+    {path: "empleado/:id", component: DetallesEmpleadoComponent},
 ];
 
 //exportaremos dos elementos el cual sera:

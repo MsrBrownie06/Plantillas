@@ -15,10 +15,21 @@ export class EmpleadosService{
     }
 
     getEmpleadosSalario(salario: string): Observable<any>{
-        var request = "api/Empleados/EmpleadosSalario/" + salario
+        var request = "/api/Empleados/EmpleadosSalario/" + salario
         var url = Global.urlEmpleados+ request
         return this._http.get(url)
         
     }
 
+    getEmpleados(): Observable<any>{
+        var request = "/api/Empleados";
+        var url = Global.urlEmpleados + request
+        return this._http.get(url)
+    }
+
+    getEmpleadoId(id: string): Observable<any>{
+        var request = "/api/Empleados/" + id;
+        var url = Global.urlEmpleados + request
+        return this._http.get(url)
+    }
 }
