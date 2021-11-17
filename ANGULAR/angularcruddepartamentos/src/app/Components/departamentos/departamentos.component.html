@@ -35,8 +35,19 @@
             <a
               [routerLink]="['/eliminar', dept.numero]"
               class="btn btn-outline-danger"
-              >Eliminar</a
+              >Eliminar RUTA</a
             >
+            <form #eliminarForm="ngForm">
+              <button
+                (click)="eliminarDepartamento()"
+                class="btn btn-outline-danger"
+                name="boton"
+                #boton
+                [(ngModel)]="id"
+              >
+                Eliminar BTN
+              </button>
+            </form>
           </td>
         </tr>
       </tbody>
