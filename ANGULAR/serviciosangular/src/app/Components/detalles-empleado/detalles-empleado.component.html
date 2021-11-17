@@ -1,6 +1,9 @@
 <h1 class="text-center">Detalles del Empleado</h1>
-<div class="row justify-content-center">
-  <div class="col-2">
+<br />
+<hr />
+<h1 class="text-center">CARTA</h1>
+<div *ngIf="empleado" class="row justify-content-center">
+  <div class="col-4">
     <div class="card mb-3 m-2 text-center">
       <div class="row g-0">
         <div class="card-header">
@@ -18,3 +21,13 @@
     </div>
   </div>
 </div>
+<br />
+<hr />
+<h1 class="text-center">COMO LISTA DE SUBELEMENTOS</h1>
+<br />
+<dl *ngIf="empleado">
+  <dt>{{ empleado.apellido }}</dt>
+  <dd>Oficio: {{ empleado.oficio }}</dd>
+  <dd>Salario: {{ empleado.salario }}</dd>
+  <dd>Departamento: {{ empleado.departamento }}</dd>
+</dl>
