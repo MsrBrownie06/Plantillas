@@ -15,7 +15,10 @@ export class ModificarPersonajeComponent implements OnInit {
   public series!: Array<Serie>;
   public personajes!: Array<Personaje>;
 
-  constructor(private _series:SeriesService, private _personaje:PersonajeService) { }
+  public idSerie!: string;
+  public idPersonaje!: string;
+
+  constructor(private _series:SeriesService, private _personaje:PersonajeService, private _route: Router) { }
 
   ngOnInit(): void {
 
@@ -28,6 +31,10 @@ export class ModificarPersonajeComponent implements OnInit {
     })
   }
 
-  
+  modificar(): void{
+    this._personaje.putPersonaje(this.idPersonaje,this.idSerie).subscribe(res=>{
+        this._route.navigate(["/personajes",this.idSerie])
+    })
+  }
 
 }

@@ -37,5 +37,11 @@ export class PersonajeService{
         return this._http.post(url,json,{headers: header})
     }
 
+    putPersonaje(idPersonaje: string, idSerie: string): Observable<any>{
+        let request = "/api/Personajes/"+idPersonaje+"/"+idSerie;
+        let url = Global.urlSeries+request;
+        return this._http.put(url,"")
+    }
+
 
 }
