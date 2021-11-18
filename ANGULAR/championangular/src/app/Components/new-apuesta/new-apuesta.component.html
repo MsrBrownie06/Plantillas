@@ -1,0 +1,71 @@
+<div class="row justify-content-center mt-5">
+  <div
+    class="col-4 rounded-3"
+    style="
+      background-color: lightgreen;
+      border: solid 3px darkgreen;
+      color: darkgreen;
+    "
+  >
+    <form #formInsertar="ngForm" class="text-center p-4 fw-bold">
+      <div class="mb-3">
+        <h3>INSERTAR APUESTA</h3>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Usuario:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="introduzca usuario"
+          name="user"
+          #userCaja
+          [(ngModel)]="usuario"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Real Madrid:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="resultado Real Madrid"
+          name="real"
+          #realCaja
+          [(ngModel)]="real"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Atletico de Madrid:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="resultado Atletico de Madrid"
+          name="atletico"
+          #atleticoCaja
+          [(ngModel)]="atletico"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Fecha:</label>
+        <input
+          class="form-control"
+          type="date"
+          placeholder="introduzca fecha"
+          name="fecha"
+          #fechaCaja
+          [(ngModel)]="fecha"
+        />
+      </div>
+
+      <button
+        (click)="insertarApuesta()"
+        class="btn btn-outline-success"
+        type="button"
+      >
+        Insertar
+      </button>
+    </form>
+  </div>
+</div>

@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //importamos las rutas y el provider que hemos creado en app.routing.ts
-import { routing, appRoutingProviders } from './app.routing';
-
 //importamos FormModules para poder usar los formularios
-import { FormsModule } from '@angular/forms';
-
-
 //importamos HttpClientModule para poder usar Apis en el proyecto
+import { routing, appRoutingProviders } from './app.routing';
+import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
+
+
 
 import { AppComponent } from './app.component';
 import { LibreriaComponent } from './Components/libreria/libreria.component';

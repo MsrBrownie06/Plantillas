@@ -1,0 +1,32 @@
+<div *ngIf="!jugador" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div *ngIf="jugador" class="row justify-content-center">
+  <div class="col-4">
+    <div class="card mb-3 m-2 text-center">
+      <div class="card-header">
+        <h5 class="card-title">{{ jugador.nombre }}</h5>
+      </div>
+      <div class="row justify-content-center">
+        <img
+          src="{{ jugador.imagen }}"
+          class="card-img-top card-img py-4"
+          alt="{{ jugador.nombre }}"
+          style="width: 350px"
+        />
+      </div>
+      <div class="card-body">
+        <h2 class="card-text">{{ jugador.posicion }}</h2>
+        <p class="card-text">Fecha: {{ jugador.fechaNacimiento }}</p>
+        <p class="card-text">Pais: {{ jugador.pais }}</p>
+        <a
+          [routerLink]="['/jugadores', jugador.idEquipo]"
+          class="btn btn-outline-success"
+          >Jugadores</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

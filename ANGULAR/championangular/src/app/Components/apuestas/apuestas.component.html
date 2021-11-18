@@ -1,0 +1,95 @@
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h1>¿Desea eliminar?</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="eliminarApuesta()"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center my-5">
+  <div class="col-6 text-center">
+    <a [routerLink]="['/newApuesta']" class="btn btn-outline-danger"
+      >Nueva Apuesta</a
+    >
+  </div>
+</div>
+<h1 class="text-danger text-center">
+  Local: Real Madrid, Visitante: Atletico de Madrid
+</h1>
+
+<div *ngIf="!apuestas" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div *ngIf="apuestas" class="row justify-content-center mt-5">
+  <div class="col-8 text-center">
+    <table
+      class="
+        table table-striped table-hover table-responsive table-bordered
+        border-dark
+      "
+    >
+      <thead
+        class="fw-bold"
+        style="background-color: midnightblue; color: white"
+      >
+        <tr>
+          <td>usuario</td>
+          <td>resultado</td>
+          <td>fecha</td>
+          <td>Accion</td>
+        </tr>
+      </thead>
+      <tbody class="table-info table-bordered border-dark">
+        <tr *ngFor="let apuesta of apuestas">
+          <td>{{ apuesta.usuario }}</td>
+          <td>{{ apuesta.resultado }}</td>
+          <td>{{ apuesta.fecha }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="cargarIdApuesta(apuesta.idApuesta)"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

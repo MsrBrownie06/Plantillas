@@ -1,16 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { routing, appRoutingProviders } from './app.routing';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
+
 import { AppComponent } from './app.component';
+import { ApuestasComponent } from './Components/apuestas/apuestas.component';
+import { EquipoComponent } from './Components/equipo/equipo.component';
+import { MenuComponent } from './Components/menu/menu.component';
+import { NewApuestaComponent } from './Components/new-apuesta/new-apuesta.component';
+import { JugadoresComponent } from './Components/jugadores/jugadores.component';
+import { JugadorComponent } from './Components/jugador/jugador.component';
+import { ChampiosService } from './Services/champions.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ApuestasComponent,
+    EquipoComponent,
+    MenuComponent,
+    NewApuestaComponent,
+    JugadoresComponent,
+    JugadorComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, routing, FormsModule, HttpClientModule
   ],
-  providers: [],
+  providers: [appRoutingProviders,ChampiosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
