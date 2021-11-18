@@ -3,28 +3,46 @@
 <!-- |-------------------| -->
 
 <!-- ----------------------------------------------MENU-------------------------------------------- -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08"
-            aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark"
+  aria-label="Tenth navbar example"
+>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample08"
+      aria-controls="navbarsExample08"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <span class="nav-link dropdown-toggle" id="desplegable" data-bs-toggle="dropdown"
-                        aria-expanded="false">Desplegable</span>
-                    <ul class="dropdown-menu" aria-labelledby="desplegable">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+    <div
+      class="collapse navbar-collapse justify-content-md-center"
+      id="navbarsExample08"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <span
+            class="nav-link dropdown-toggle"
+            id="desplegable"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Desplegable</span
+          >
+          <ul class="dropdown-menu" aria-labelledby="desplegable">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
 
 <!-- |-------------------| -->
@@ -32,26 +50,138 @@
 <!-- |-------------------| -->
 
 <!-- ----------------------------------------------MENU-------------------------------------------- -->
-<nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
-    <div className="container-fluid">
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08"
-            aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-        </button>
+<nav
+  className="navbar navbar-expand-lg navbar-dark bg-dark"
+  aria-label="Tenth navbar example"
+>
+  <div className="container-fluid">
+    <button
+      className="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample08"
+      aria-controls="navbarsExample08"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
 
-        <div className="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <a className="nav-link active" href="#">Link</a>
-                </li>
-                <li className="nav-item dropdown">
-                    <span className="nav-link dropdown-toggle" id="desplegable" data-bs-toggle="dropdown"
-                        aria-expanded="false">Desplegable</span>
-                    <ul className="dropdown-menu" aria-labelledby="desplegable">
-                        <li><a className="dropdown-item" href="#">Action</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+    <div
+      className="collapse navbar-collapse justify-content-md-center"
+      id="navbarsExample08"
+    >
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <a className="nav-link active" href="#">Link</a>
+        </li>
+        <li className="nav-item dropdown">
+          <span
+            className="nav-link dropdown-toggle"
+            id="desplegable"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Desplegable</span
+          >
+          <ul className="dropdown-menu" aria-labelledby="desplegable">
+            <li><a className="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
+  </div>
+</nav>
+
+<!-- |--------------------| -->
+<!-- |-------ANGULAR------| -->
+<!-- |--------------------| -->
+
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark"
+  aria-label="Tenth navbar example"
+>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample08"
+      aria-controls="navbarsExample08"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse justify-content-md-center"
+      id="navbarsExample08"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a [routerLink]="['/ruta']" class="nav-link active">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <span
+            class="nav-link dropdown-toggle"
+            id="desplegable"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Desplegable</span
+          >
+          <ul class="dropdown-menu" aria-labelledby="desplegable">
+            <li>
+              <a [routerLink]="['/ruta']" class="dropdown-item">Action</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- |------------------| -->
+<!-- |--------VUE-------| -->
+<!-- |------------------| -->
+
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark"
+  aria-label="Tenth navbar example"
+>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample08"
+      aria-controls="navbarsExample08"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse justify-content-md-center"
+      id="navbarsExample08"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <router-link to="/ruta" class="nav-link active">Link</router-link>
+        </li>
+        <li class="nav-item dropdown">
+          <span
+            class="nav-link dropdown-toggle"
+            id="desplegable"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Desplegable</span
+          >
+          <ul class="dropdown-menu" aria-labelledby="desplegable">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

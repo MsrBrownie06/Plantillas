@@ -15,6 +15,9 @@ import { DepartamentoService } from './Services/departamentos.service';
 import { HomeComponent } from './Components/home/home.component';
 import { InsertarDepartamentoComponent } from './Components/insertar-departamento/insertar-departamento.component';
 import { ModificarDepartamentoComponent } from './Components/modificar-departamento/modificar-departamento.component';
+import { EmpleadosComponent } from './Components/empleados/empleados.component';
+import { EmpleadoService } from './Services/empleados.service';
+import { IncrementarSalarioComponent } from './Components/incrementar-salario/incrementar-salario.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,14 @@ import { ModificarDepartamentoComponent } from './Components/modificar-departame
     DepartamentosComponent,
     HomeComponent,
     InsertarDepartamentoComponent,
-    ModificarDepartamentoComponent
+    ModificarDepartamentoComponent,
+    EmpleadosComponent,
+    IncrementarSalarioComponent
   ],
   imports: [
     BrowserModule,routing,FormsModule,HttpClientModule
   ],
-  providers: [appRoutingProviders,DepartamentoService],
+  providers: [appRoutingProviders,DepartamentoService,EmpleadoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

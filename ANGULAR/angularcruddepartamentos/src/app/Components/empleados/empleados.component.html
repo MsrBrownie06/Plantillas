@@ -1,0 +1,62 @@
+<div class="row justify-content-center mt-5">
+  <div
+    class="col-4 rounded-3"
+    style="
+      background-color: lightyellow;
+      border: solid 3px darkorange;
+      color: darkorange;
+    "
+  >
+    <form #formModificar="ngForm" class="text-center p-4 fw-bold">
+      <div class="mb-3">
+        <h3>MODIFICAR SALARIO</h3>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Salario:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="introducir nuevo salario"
+          name="salario"
+          #salarioCaja
+          [(ngModel)]="incremento"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row justify-content-center mt-5">
+  <div class="col-8 text-center">
+    <table class="table table-responsive table-bordered border-dark">
+      <thead
+        class="fw-bold"
+        style="background-color: midnightblue; color: white"
+      >
+        <tr>
+          <td>departamento</td>
+          <td>apellido</td>
+          <td>oficio</td>
+          <td>salario</td>
+          <td>Accion</td>
+        </tr>
+      </thead>
+      <tbody class="table-info table-bordered border-dark">
+        <tr *ngFor="let empleado of empleados">
+          <td>{{ empleado.departamento }}</td>
+          <td>{{ empleado.apellido }}</td>
+          <td>{{ empleado.oficio }}</td>
+          <td>{{ empleado.salario }}</td>
+          <td class="bg-secondary">
+            <button
+              (click)="modificarSalario(empleado.idEmpleado)"
+              class="btn btn-outline-warning"
+              type="button"
+            >
+              Incrementar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
