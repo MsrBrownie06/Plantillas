@@ -13,6 +13,8 @@ import { NewApuestaComponent } from './Components/new-apuesta/new-apuesta.compon
 import { JugadoresComponent } from './Components/jugadores/jugadores.component';
 import { JugadorComponent } from './Components/jugador/jugador.component';
 import { ChampiosService } from './Services/champions.service';
+import { NewJugadorComponent } from './Components/new-jugador/new-jugador.component';
+import { NewEquipoComponent } from './Components/new-equipo/new-equipo.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ChampiosService } from './Services/champions.service';
     MenuComponent,
     NewApuestaComponent,
     JugadoresComponent,
-    JugadorComponent
+    JugadorComponent,
+    NewJugadorComponent,
+    NewEquipoComponent
   ],
   imports: [
     BrowserModule, routing, FormsModule, HttpClientModule

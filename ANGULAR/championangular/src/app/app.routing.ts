@@ -8,6 +8,8 @@ import { ApuestasComponent } from "./Components/apuestas/apuestas.component";
 import { JugadoresComponent } from "./Components/jugadores/jugadores.component";
 import { JugadorComponent } from "./Components/jugador/jugador.component";
 import { NewApuestaComponent } from "./Components/new-apuesta/new-apuesta.component";
+import { NewJugadorComponent } from "./Components/new-jugador/new-jugador.component";
+import { NewEquipoComponent } from "./Components/new-equipo/new-equipo.component";
 
 
 //constante con las rutas
@@ -17,6 +19,8 @@ const appRoutes: Routes = [
     {path: "jugador/:idJugador", component: JugadorComponent},
     {path: "apuestas", component: ApuestasComponent},
     {path: "newApuesta", component: NewApuestaComponent},
+    {path: "newJugador", component: NewJugadorComponent},
+    {path: "newEquipo", component: NewEquipoComponent}, 
     
 ];
 
