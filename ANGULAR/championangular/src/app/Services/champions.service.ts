@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Global } from "../Global";
 
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Apuesta } from "../Models/Apuesta";
 import { Equipo } from "../Models/Equipo";
@@ -89,4 +89,18 @@ export class ChampiosService{
         return this._http.get(url)
     }
     
+    inputFile(file: File): Observable<any>{
+        const datos: FormData = new FormData()
+        datos.append('files',file)
+
+        var request = "./../../assets/images"
+        var url = Global.urlPropia+request;
+
+        let header = new HttpHeaders().set('Content-Type', 'multipart/form-data')
+
+        //var res = new HttpRequest('POST',url,datos,{reportProgress: true, responseType: 'json'})
+        
+        return this._http.post(url,file)
+    }
+
 }

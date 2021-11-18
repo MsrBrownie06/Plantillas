@@ -1,29 +1,46 @@
 <div class="row justify-content-center mt-5">
-  <div
-    class="col-4 rounded-3"
-    style="
+  <div class="col-4 rounded-3" style="
       background-color: lightgreen;
       border: solid 3px darkgreen;
       color: darkgreen;
-    "
-  >
+    ">
     <form #formInsertar="ngForm" class="text-center p-4 fw-bold">
       <div class="mb-3">
         <h3>INSERTAR JUGADOR</h3>
       </div>
       <div class="mb-3">
         <label class="form-label">Nombre:</label>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="introduzca nombre"
-          name="nombre"
-          #nombreCaja
-          [(ngModel)]="nombre"
-        />
+        <input class="form-control" type="text" placeholder="introduzca nombre" name="nombre" #nombreCaja
+          [(ngModel)]="nombre" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Pocision:</label>
+        <input class="form-control" type="text" placeholder="introduzca posicion" name="posicion" #posicionCaja
+          [(ngModel)]="posicion" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Imagen:</label>
+        <input class="form-control" type="file" name="imagen" #imagenCaja />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Fecha:</label>
+        <input class="form-control" type="date" placeholder="introduzca fecha nacimiento" name="fecha" #fechaCaja
+          [(ngModel)]="fecha" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Pais:</label>
+        <input class="form-control" type="text" placeholder="introduzca fecha nacimiento" name="pais" #paisCaja
+          [(ngModel)]="pais" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Equipo:</label>
+        <select class="form-control" name="idEquipo" #idEquipoCaja [(ngModel)]="idEquipo">
+          <option *ngFor="let equipo of equipos" value="{{equipo.idEquipo}}">{{equipo.nombre}}</option>
+        </select>
       </div>
 
-      <button class="btn btn-outline-success" type="button">Insertar</button>
+      <button (click)="insertarJugador()" class="btn btn-outline-success" type="button">Insertar</button>
     </form>
   </div>
 </div>
+<img src="./../../../assets/images/LOGO_PERSONAL.png" />
