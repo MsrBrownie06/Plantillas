@@ -1,0 +1,37 @@
+<div *ngIf="!peliculas">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+<h1 *ngIf="lugar">Peliculas de {{ lugar }}</h1>
+<h1 *ngIf="eliminado == true" class="text-dark bg-success p-3">
+  Pelicula Eliminada Correctamente
+</h1>
+<div *ngIf="peliculas">
+  <div class="row row-cols-6 g-2">
+    <div *ngFor="let pelicula of peliculas" class="col-2">
+      <div class="card text-center">
+        <div class="row justify-content-center">
+          <img
+            src="{{ pelicula.foto }}"
+            class="card-img-top card-img py-4"
+            alt="{{ pelicula.titulo }}"
+            (click)="cargarDetallesPelicula(pelicula.idPelicula)"
+            style="width: 350px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="peliculaSeleccionada && mostrarPelicula == true">
+    <hr />
+
+    <app-detalles-pelicula
+      [pelicula]="peliculaSeleccionada"
+      (modificar)="modificarGenero($event)"
+      (eliminar)="eliminarPelicula($event)"
+    ></app-detalles-pelicula>
+  </div>
+</div>

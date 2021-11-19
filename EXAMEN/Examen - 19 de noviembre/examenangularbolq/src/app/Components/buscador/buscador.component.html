@@ -1,0 +1,16 @@
+<div *ngIf="peliculas">
+  <div class="row row-cols-6 g-2">
+    <div *ngFor="let pelicula of peliculas" class="col-2">
+      <div class="card text-center">
+        <div class="row justify-content-center">
+          <img
+            src="{{ pelicula.foto }}"
+            class="card-img-top card-img py-4"
+            alt="{{ pelicula.titulo }}"
+            style="width: 350px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
