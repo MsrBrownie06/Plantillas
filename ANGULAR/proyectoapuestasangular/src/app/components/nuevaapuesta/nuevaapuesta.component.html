@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <form #formApuestas="ngForm">
+            <label>Usuario</label>
+            <input type="text" name="cajaUsuario" #cajaUsuario /><br/>
+            <label>Real Madrid</label>
+            <input type="text" name="cajaMadrid" #cajaMadrid /><br/>
+            <label>Atlético de Madrid</label>
+            <input type="text" name="cajaAtletico" #cajaAtletico /><br/>
+            <label>Fecha</label>
+            <input type="text" name="cajaFecha" #cajaFecha /><br/>
+            <button (click)="insertarApuesta()">Insertar</button>
+        </form>
+    </div>
+</div>

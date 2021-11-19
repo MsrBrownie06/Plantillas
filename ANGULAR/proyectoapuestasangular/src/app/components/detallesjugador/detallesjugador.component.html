@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div  class="col-8 text-center" *ngIf="jugador">
+        <h1>Jugador : {{jugador.nombre}}</h1>
+        <div>
+            <img width="150px" src="jugador.imagen" alt="imagen"/>
+            <h2>{{jugador.posicion}}</h2>
+            <h3>Fecha de Nacimiento : {{jugador.fechaNacimiento}}</h3>
+            <h4>Pais : {{jugador.pais}}</h4><br/>
+            <a class="btn btn-danger" [routerLink]="['/tablajugadores',jugador.idEquipo]">Volver</a>
+        </div>
+    </div>
+</div>
+
+<div  class="row justify-content-center">
+    <div  class="col-8 text-center" *ngIf="!jugador">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+    </div>
+</div>
